@@ -1,0 +1,82 @@
+.container {
+  position: relative;
+  height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.van-nav-bar {
+  background-color: #3163E8 !important;
+}
+
+.van-nav-bar__title {
+  font-family: PingFangSC-Regular !important;
+  font-size: 18px !important;
+  color: #FFFFFF !important;
+  letter-spacing: 0 !important;
+}
+
+.van-nav-bar__text {
+  font-family: PingFangSC-Medium !important;
+  font-size: 14px !important;
+  color: #FFFFFF !important;
+  letter-spacing: 0 !important;
+}
+
+.minebg {
+  width: 750rpx;
+  height: 340rpx;
+}
+
+.card-box {
+  width: 702rpx;
+  position: absolute;
+  top: 332rpx;
+  left: 24rpx;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0 rgba(49, 101, 236, 0.04);
+  border-radius: 8rpx;
+  /* margin: 0 24rpx 140rpx 24rpx; */
+}
+
+.content {
+  width: 630rpx;
+  height: 624rpx;
+  margin: 0 36rpx;
+}
+
+.card-top {
+  padding: 24rpx 0;
+  border-bottom: 4rpx solid #E0E0E0;
+}
+
+.avatar {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.userId {
+  margin-left: 24rpx;
+  /* font-family: '.AppleSystemUIFont'; */
+  font-size: 18px;
+  color: #333333;
+  letter-spacing: 0;
+  font-weight: bold;
+}
+
+.option {
+  width: 100%;
+  padding: 32rpx 4rpx;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.optiontxt {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #4A4A4A;
+  letter-spacing: 0;
+}
+.rightarrow{
+  width: 18rpx;
+  height: 34rpx;
+  margin-right: 4rpx;
+}

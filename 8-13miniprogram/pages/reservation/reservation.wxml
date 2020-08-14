@@ -1,0 +1,66 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+	<view class="top-blue">
+		<van-nav-bar title="预约车辆">
+		</van-nav-bar>
+		<view>
+			<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+					<view class="tab-item {{currentTab==index?'active':''}}"  data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="{{index}}">{{item.oreName}}</view>
+			</scroll-view>
+		</view>
+		<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+			<swiper-item wx:for="{{oreList}}" wx:key="index">
+				<scroll-view scroll-y="true" class="scoll-h">
+					<view class="swiper-item-box">
+						<view class="date-box flexr0c">
+							<view class="today {{date==0?'dateactive':''}}" bindtap="choosedate" data-type="today">今日</view>
+							<view class="tomorrow {{date==1?'dateactive':''}}" bindtap="choosedate" data-type="tomorrow">明日</view>
+							<view class="week {{date==2?'dateactive':''}}" bindtap="choosedate" data-type="week">本周</view>
+							<view class="month {{date==3?'dateactive':''}}" bindtap="choosedate" data-type="month">本月</view>
+						</view>
+						<view class="countnum-box flexr">
+							<view class="countnum-left flexc0c">
+								<view class="countnum-title">预约车次(辆)</view>
+								<view class="countnum-num-left">125</view>
+							</view>
+							<view class="splitline"></view>
+							<view class="countnum-right flexc0c">
+								<view class="countnum-title">预约量(吨)</view>
+								<view class="countnum-num-right">8354</view>
+							</view>
+						</view>
+						<!-- <view class="content-item-box" wx:for=""> -->
+
+						<view class="content-item-box" hidden="{{0}}">
+							<view class="content-item">
+								<view class="company-name">渑池县恒祥矿业有限公司</view>
+								<view class="content-item-bottom flexrbc">
+									<view class="content-item-bottom-left flexc">
+										<view class="product-name">产品名称：<text class="subtext">东方希望铝</text></view>
+										<view class="car-name">运输车号：<text class="subtext">豫A38H45</text></view>
+										<view class="car-time">到场时间：<text class="subtext">2020-08-10 16:30</text></view>
+									</view>
+									<view class="content-item-bottom-right flexc">
+										<view class="time flexr0c">
+											<view class="hour">03</view>
+											<view class="hourname">时</view>
+											<view class="hour">12</view>
+											<view class="hourname">分</view>
+										</view>
+										<view class="sub-title">剩余预约时间</view>
+									</view>
+								</view>
+							</view>
+						</view>
+						<view class="null-box flexc0c" hidden="{{1}}">
+							<image class="null-img" src="../../assets/image/12noyuyue.png"></image>
+							<view class="tips">暂无预约车辆</view>
+						</view>
+					</view>
+					<!-- <view class="tips">没有更多了~</view> -->
+					
+				</scroll-view>
+			</swiper-item>
+		</swiper>
+	</view>
+</view>

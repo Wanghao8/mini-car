@@ -1,0 +1,21 @@
+/**app.wxss**/
+
+/* flex布局 */
+.flexr {display: flex;flex-direction: row;}
+.flexra {display: flex;flex-direction: row;justify-content: space-around}
+.flexrsc {display: flex;flex-direction: row;justify-content: flex-start;align-items: center;}
+.flexrcc {display: flex;flex-direction: row;justify-content: center;align-items: center;}
+.flexras {display: flex;flex-direction: row;justify-content: space-around;align-items: flex-start;}
+.flexr0c {display: flex;flex-direction: row;align-items: center;}
+.flexrss {display: flex;flex-direction: row;justify-content: flex-start;align-items: flex-start;}
+.flexrbc {display: flex;flex-direction: row;justify-content: space-between;align-items: center;}
+.flexrb {display: flex;flex-direction: row;justify-content: space-between;}
+.flexrac {display: flex;flex-direction: row;justify-content: space-around;align-items: center;}
+.flexr0s {display: flex;flex-direction: row;align-items: flex-start;}
+.flexc {display: flex;flex-direction: column;}
+.flexcc0 {display: flex;flex-direction: column;justify-content: center;}
+.flexcac {display: flex;flex-direction: column;justify-content: space-around;align-items: center;}
+.flexcas {display: flex;flex-direction: column;justify-content: space-around;align-items: flex-start;}
+.flexccc {display: flex;flex-direction: column;justify-content: center;align-items: center;}
+.flexc0c {display: flex;flex-direction: column;align-items: center;}
+.flexc0s {display: flex;flex-direction: column;align-items: flex-start;}

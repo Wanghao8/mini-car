@@ -1,0 +1,97 @@
+/* pages/login/login.wxss */
+.content {
+  /* width:100vw;
+  height:100%; */
+  /* padding: 80rpx 48rpx 0 48rpx; */
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  width: 654rpx;
+  margin-top: 200rpx;
+}
+
+.content .title {
+  font-family: PingFang-SC-Regular;
+  font-size: 40rpx;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 56rpx;
+}
+
+.content .title .jiacu {
+  font-family: PingFang-SC-Bold;
+  font-size: 40rpx;
+  color: #3163E8;
+  letter-spacing: 0;
+  line-height: 56rpx;
+  font-weight: bold;
+}
+
+.content .name {
+  display: flex;
+  justify-content: flex-start;
+  margin: 100rpx 0 15rpx 0;
+}
+
+.content .name image {
+  width: 55rpx;
+  height: 43rpx;
+  margin-right: 16rpx;
+}
+
+.content .btm {
+  width: 654rpx;
+  border: 1rpx solid #CCCFD6;
+  transform: scaleY(0.5);
+}
+
+.content .login {
+  width: 654rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  /* opacity: 0.3; */
+  background: #3163E8;
+  border-radius: 8rpx;
+  margin-top: 100rpx;
+  text-align: center;
+  z-index: 10;
+}
+
+.login text {
+  font-family: PingFang-SC-Regular;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+
+.login_inactive {
+  opacity: 0.3;
+}
+
+.login_bg {
+  width: 100%;
+  position: relative;
+  /* overflow: hidden; */
+}
+
+.login_bg image {
+  width: 100vw;
+  height: 40vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.password {
+  font-size: 24rpx;
+}
+
+input {
+  width: 750rpx;
+}
+
+.name input {
+  margin-left: 10rpx;
+}

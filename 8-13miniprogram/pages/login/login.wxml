@@ -1,0 +1,24 @@
+<!--pages/login/login.wxml-->
+<view class="content">
+	<view class="box">
+		<view class="title">您好， 欢迎使用<view style="display:inline" class='jiacu'>料场企业管理系统</view>
+		</view>
+		<view class="name">
+			<image src="../../assets/image/1user.png"></image>
+			<!-- <input focus="{{usernamefocus}}" bindfocus="clickusername" placeholder="请输入用户名" placeholder-style='font-size: 28rpx;color: #C4C6CF;letter-spacing: 0;' bindinput="accountval" value='{{username}}'></input> -->
+			<input  placeholder="请输入用户名" placeholder-style='font-size: 28rpx;color: #C4C6CF;letter-spacing: 0;' bindinput="accountval" value='{{username}}'></input>
+		</view>
+		<view class="btm"></view>
+		<view class="name">
+			<image src="../../assets/image/2password.png"></image>
+			<input class="password" focus="{{passwordfocus}}" bindfocus="clickpassword" bindblur="blurpassword" placeholder="请输入密码" password="true" placeholder-style='font-size: 28rpx;color: #C4C6CF;letter-spacing: 0;' bindinput="pwordval" value="{{password}}"></input>
+			<!-- <input class="password" placeholder="请输入密码" password="true" placeholder-style='font-size: 28rpx;color: #C4C6CF;letter-spacing: 0;' bindinput="pwordval" value="{{password}}"></input> -->
+		</view>
+		<view class="btm"></view>
+		<view class="{{loginActive?'login':'login login_inactive'}}" hidden="{{!loginActive}}" bindtap="the_login"><text>登录</text></view>
+		<view class="{{loginActive?'login':'login login_inactive'}}" hidden="{{loginActive}}"><text>登录</text></view>
+		<view class="login_bg">
+			<image src="../../assets/image/3loginbg.png"></image>
+		</view>
+	</view>
+</view>

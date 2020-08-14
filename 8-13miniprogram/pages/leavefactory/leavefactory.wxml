@@ -1,0 +1,54 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+	<view class="top-blue">
+		<van-nav-bar title="出厂车辆">
+		</van-nav-bar>
+		<view>
+			<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+					<view class="tab-item {{currentTab==index?'active':''}}"  data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
+			</scroll-view>
+		</view>
+		<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+			<swiper-item wx:for="{{oreList}}" wx:key="index">
+				<scroll-view scroll-y="true" class="scoll-h">
+					<view class="swiper-item-box">
+						<view class="date-box flexr0c">
+							<view class="today {{date==1?'dateactive':''}}" bindtap="choosedate" data-type="today">今日</view>
+							<view class="tomorrow {{date==2?'dateactive':''}}" bindtap="choosedate" data-type="tomorrow">明日</view>
+							<view class="week {{date==3?'dateactive':''}}" bindtap="choosedate" data-type="week">本周</view>
+							<view class="month {{date==4?'dateactive':''}}" bindtap="choosedate" data-type="month">本月</view>
+						</view>
+
+						<!-- <view class="content-item-box" wx:for=""> -->
+
+						<view class="content-item-box" hidden="{{0}}">
+							<view class="content-item">
+								<view class="company-name">东方希望铝</view>
+								<view class="content-item-bottom flexrbc">
+									<view class="content-item-bottom-left flexc">
+										<view class="car-name">出厂车辆：<text class="subtext">豫A38H45</text></view>
+										<view class="product-name">需方企业：<text class="subtext">渑池县恒祥矿业有限公司</text></view>
+										<view class="car-time">出厂时间：<text class="subtext">2020-08-10 16:30</text></view>
+									</view>
+									<view class="content-item-bottom-right flexrbc" bindtap="toDettail">
+										<view class="content-item-right-left flexc0c">
+											<view class="content-item-right-left-title">净重(吨)</view>
+											<view class="content-item-right-left-num">40.10</view>
+										</view>
+										<image class="detailimg" src="../../assets/image/13detailarrow.png"></image>
+									</view>
+								</view>
+							</view>
+						</view>
+						<view class="null-box flexc0c" hidden="{{1}}">
+							<image class="null-img" src="../../assets/image/14noleave.png"></image>
+							<view class="tips">暂无出厂车辆</view>
+						</view>
+					</view>
+					<view class="tips">没有更多了~</view>
+
+				</scroll-view>
+			</swiper-item>
+		</swiper>
+	</view>
+</view>

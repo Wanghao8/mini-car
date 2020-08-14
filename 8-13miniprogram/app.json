@@ -1,0 +1,56 @@
+{
+  "pages": [
+    
+
+    "pages/index/index",
+    "pages/login/login",
+    "pages/mine/mine",
+    "pages/reservation/reservation",
+    "pages/leavefactory/leavefactory",
+    "pages/editpassword/editpassword",
+    "pages/leavefactory/leavedetail/leavedetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "selectedColor": "#3163E8",
+    "color":"#D8D8D8",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "./assets/image/4index.png",
+        "selectedIconPath": "./assets/image/4indexactive.png",
+        "selectedColor": "#3163E8",
+        "text": "首页"
+      },
+      
+      {
+        "pagePath": "pages/reservation/reservation",
+        "iconPath": "./assets/image/5yuyue.png",
+        "selectedIconPath": "./assets/image/5yuyueactive.png",
+        "selectedColor": "#3163E8",
+        "text": "预约"
+      },
+      {
+        "pagePath": "pages/leavefactory/leavefactory",
+        "iconPath": "./assets/image/6leave.png",
+        "selectedIconPath": "./assets/image/6leaveactive.png",
+        "selectedColor": "#3163E8",
+        "text": "出厂"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "./assets/image/7mine.png",
+        "selectedIconPath": "./assets/image/7mineactive.png",
+        "selectedColor": "#3163E8",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

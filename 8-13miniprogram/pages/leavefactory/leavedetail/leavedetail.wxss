@@ -1,0 +1,167 @@
+.container {
+  background-color: #f9f9f9;
+  height: 100vh;
+  overflow: auto;
+}
+
+.navigation {
+  position: fixed;
+}
+
+.van-nav-bar {
+  background-color: #3163E8 !important;
+  width: 100vw;
+}
+
+.van-nav-bar__title {
+  font-family: PingFangSC-Regular !important;
+  font-size: 18px !important;
+  color: #FFFFFF !important;
+  letter-spacing: 0 !important;
+}
+
+.van-nav-bar__text {
+  font-family: PingFangSC-Medium !important;
+  font-size: 14px !important;
+  color: #FFFFFF !important;
+  letter-spacing: 0 !important;
+}
+
+.van-icon-arrow-left {
+  width: 20rpx !important;
+  height: 40rpx !important;
+  color: #fff !important;
+}
+
+.van-icon {
+  width: 20rpx !important;
+  height: 40rpx !important;
+  font-size: 50rpx !important;
+}
+
+.img-box {
+  width: 702rpx;
+  height: 320rpx;
+  /* margin: 16rpx 24rpx; */
+  margin: 144rpx 24rpx;
+  margin-bottom: 0;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0 rgba(49, 101, 236, 0.04);
+  border-radius: 8rpx;
+}
+
+.img {
+  width: 682rpx;
+  height: 300rpx;
+  margin: 10rpx;
+}
+
+.detail-box {
+  position: relative;
+  top: 12rpx;
+}
+
+.content {
+  width: 622rpx;
+  height: 956rpx;
+  z-index: 2;
+  /* border: 1px solid #000; */
+  position: absolute;
+  top: 8rpx;
+  left: 60rpx;
+}
+
+.detailbg {
+  width: 742rpx;
+  height: 996rpx;
+  margin-left: 4rpx;
+  z-index: 1;
+  margin-top: -14rpx;
+}
+
+.countnum-box {
+  background-color: #fff;
+  height: 170rpx;
+}
+
+.countnum-left,
+.countnum-right {
+  flex: 1;
+}
+
+.countnum-title {
+  font-size: 14px;
+  color: #4A4A4A;
+  margin-top: 20rpx;
+}
+
+.countnum-num-left {
+  font-size: 36px;
+  font-family: PingFangSC-Medium;
+  letter-spacing: 0;
+  color: #3163E8;
+  font-weight: 500;
+}
+
+.splitline {
+  width: 2rpx;
+  /* width: 20rpx; */
+  height: 48rpx;
+  background-color: #CECED3;
+  position: relative;
+  top: 80rpx;
+}
+
+.countnum-num-right {
+  font-size: 36px;
+  font-family: PingFangSC-Medium;
+  letter-spacing: 0;
+  color: #F5A623;
+  font-weight: 500;
+}
+
+.content-middle {
+  border-top: 2rpx dashed #E0E0E0;
+  padding: 10rpx 0;
+}
+
+.product-name,
+.car-name,
+.car-time {
+  font-family: PingFangSC-Regular;
+  font-size: 16px;
+  color: #626B80;
+  letter-spacing: 0;
+  line-height: 60rpx;
+}
+
+.subtext {
+  font-family: PingFangSC-Semibold;
+  font-size: 16px;
+  color: #4A4A4A;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+.content-bottom{
+  border-top: 2rpx dashed #E0E0E0;
+  padding: 10rpx 0;
+}
+.staytime{
+  font-family: PingFangSC-Regular;
+  font-size: 16px;
+  color: #626B80;
+  letter-spacing: 0;
+  line-height: 60rpx;
+}
+.staytimesubtext{
+  font-family: PingFangSC-Semibold;
+  font-size: 16px;
+  color: #D0021B;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+.phoneimg{
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 32rpx;
+}

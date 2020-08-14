@@ -1,0 +1,97 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+	<view class="top-blue">
+		<van-nav-bar title="首页">
+		</van-nav-bar>
+		<picker class="monthpicker" bindchange="chooseMonth" value="{{monthIndex}}" range="{{monthList}}">
+			{{monthList[monthIndex]}}
+		</picker>
+		<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+			<view class="tab-item {{currentTab==index?'active':''}}"  data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
+		</scroll-view>
+	</view>
+	<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+		<swiper-item wx:for="{{oreList}}" wx:key="index">
+			<scroll-view scroll-y="true" class="scoll-h">
+				<view class="content-box flexc0c">
+					<view class="content-top">
+						<view class="flexc0c">
+							<view class="content-top-title">月度出厂车次/吨数</view>
+							<view class="content-top-num flexr0c">
+								<view class="content-top-num-left">2764</view>
+								<view class="split-line">|</view>
+								<view class="content-top-num-right">2764</view>
+							</view>
+							<view class="content-top-today-box flexr0c">
+								<view class="content-top-today">当日</view>
+								<view class="content-top-today-num">54车次/2765吨</view>
+							</view>
+						</view>
+					</view>
+					<view class="todaychart">
+						<view class="chart-top-box flexrbc">
+							<view class="chart-top-left flexr0c">
+								<image class="splitlineimg" src="../../assets/image/8splitline.png"></image>
+								<view class="chart-top-left-title">每日车次/吨数</view>
+								<view class="chart-top-left-unit">单位(辆/吨)</view>
+							</view>
+							<view class="chart-top-right flexr0c">
+								<view class="chart-top-right-item {{todaybtn==0?'chart-active-btn':''}}" data-type="todaycar" bindtap="toggleActive">车次</view>
+								<view class="chart-top-right-item {{todaybtn==0?'':'chart-active-btn'}}" data-type="todayweight" bindtap="toggleActive">吨数</view>
+							</view>
+						</view>
+						<!-- echarts表1 -->
+						<!-- <ec-canvas id="mychart-dom-line" width='750rpx' canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas> -->
+					</view>
+					<view class="monthchart">
+						<view class="chart-top-box flexrbc">
+							<view class="chart-top-left flexr0c">
+								<image class="splitlineimg" src="../../assets/image/8splitline.png"></image>
+								<view class="chart-top-left-title">每月车次/吨数</view>
+								<view class="chart-top-left-unit">单位(辆/吨)</view>
+							</view>
+							<view class="chart-top-right flexr0c">
+								<view class="chart-top-right-item {{monthbtn==0?'chart-active-btn':''}}" data-type="monthcar" bindtap="toggleActive">车次</view>
+								<view class="chart-top-right-item {{monthbtn==0?'':'chart-active-btn'}}" data-type="monthweight" bindtap="toggleActive">吨数</view>
+							</view>
+						</view>
+						<view class="chart-month"></view>
+					</view>
+					<view class="typeperchart">
+						<view class="chart-top-box flexrbc">
+							<view class="chart-top-left flexr0c">
+								<image class="splitlineimg" src="../../assets/image/8splitline.png"></image>
+								<view class="chart-top-left-title">矿种吨数占比</view>
+							</view>
+						</view>
+					</view>
+					<view class="rankcompany">
+						<view class="chart-top-box flexrbc">
+							<view class="chart-top-left flexr0c">
+								<image class="splitlineimg" src="../../assets/image/8splitline.png"></image>
+								<view class="chart-top-left-title">月度前十需方企业调运排名</view>
+							</view>
+							<view class="chart-top-right flexr0c">
+								<view class="chart-top-right-item {{needbtn==0?'chart-active-btn':''}}" data-type="needcar" bindtap="toggleActive">车次</view>
+								<view class="chart-top-right-item {{needbtn==0?'':'chart-active-btn'}}" data-type="needweight" bindtap="toggleActive">吨数</view>
+							</view>
+						</view>
+					</view>
+					<view class="ranktoaddress">
+						<view class="chart-top-box flexrbc">
+							<view class="chart-top-left flexr0c">
+								<image class="splitlineimg" src="../../assets/image/8splitline.png"></image>
+								<view class="chart-top-left-title">月度前十目的地调运排名</view>
+							</view>
+							<view class="chart-top-right flexr0c">
+								<view class="chart-top-right-item {{destinationbtn==0?'chart-active-btn':''}} " data-type="destinationcar" bindtap="toggleActive">车次</view>
+								<view class="chart-top-right-item {{destinationbtn==0?'':'chart-active-btn'}}" data-type="destinationweight" bindtap="toggleActive">吨数</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</scroll-view>
+		</swiper-item>
+	</swiper>
+
+</view>

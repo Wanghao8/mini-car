@@ -1,0 +1,246 @@
+/* pages/index/index.wxss */
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* .navigation{
+  width: 100%;
+  height: 100rpx;
+  background-color: #3163E8;
+  color: #fff;
+  position: absolute;
+  top: 0;
+} */
+.van-nav-bar {
+  background-color: #3163E8 !important;
+}
+
+.van-nav-bar__title {
+  font-family: PingFangSC-Regular !important;
+  font-size: 18px !important;
+  color: #FFFFFF !important;
+  letter-spacing: 0 !important;
+}
+
+.van-nav-bar__text {
+  font-family: PingFangSC-Medium !important;
+  font-size: 14px !important;
+  color: #FFFFFF !important;
+  letter-spacing: 0 !important;
+}
+
+.monthpicker {
+  display: inline;
+  position: absolute;
+  top: 60rpx;
+  z-index: 2;
+  color: #fff;
+  left: 20rpx;
+  color: #FFFFFF !important;
+  font-family: PingFangSC-Medium !important;
+  letter-spacing: 0 !important;
+}
+
+
+.tab-h {
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  top: 128rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  line-height: 100rpx;
+  background: #3163E8;
+  color: #C1D0F8;
+  font-size: 32rpx;
+  white-space: nowrap;
+  border: none;
+}
+
+.tab-item {
+  margin: 0 36rpx;
+  display: inline-block;
+
+}
+
+.tab-item.active {
+  color: #4675F9;
+  position: relative;
+  font-family: PingFangSC-Regular;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+
+.tab-item.active:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 8rpx;
+
+  background: #F5A623;
+  position: absolute;
+  left: -4rpx;
+  bottom: 0;
+}
+
+
+
+
+.scoll-h {
+  height: 100%;
+  background: #f9f9f9;
+  position: absolute;
+  top: 100rpx;
+}
+
+.content-box {
+  width: 702rpx;
+  margin: 16rpx 24rpx;
+}
+
+.content-top {
+  width: 100%;
+  height: 232rpx;
+  background-color: #fff;
+}
+
+.todaychart,
+.typeperchart {
+  width: 100%;
+  height: 400rpx;
+  background-color: #fff;
+  margin-top: 16rpx;
+}
+
+.monthchart {
+  width: 100%;
+  height: 440rpx;
+  background-color: #fff;
+  margin-top: 16rpx;
+}
+
+.rankcompany,
+.ranktoaddress {
+  width: 100%;
+  height: 460rpx;
+  background-color: #fff;
+  margin-top: 16rpx;
+}
+
+.content-top-title {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #4A4A4A;
+  letter-spacing: 0;
+  margin-top: 16rpx;
+}
+
+.content-top-num {
+  margin: 10rpx 0;
+}
+
+.content-top-num-left {
+  font-family: PingFangSC-Medium;
+  font-size: 72rpx;
+  color: #3163E8;
+  font-weight: bold;
+  letter-spacing: 0;
+}
+
+.split-line {
+  color: #CECED3;
+  height: 72rpx;
+  width: 1rpx;
+  font-size: 50rpx;
+  margin: 0 52rpx;
+  transform: scaleX(0.5);
+}
+
+.content-top-num-right {
+  font-family: PingFangSC-Medium;
+  font-size: 72rpx;
+  font-weight: bold;
+  color: #F5A623;
+  letter-spacing: 0;
+}
+
+.content-top-today {
+  font-family: PingFangSC-Semibold;
+  font-size: 14px;
+  color: #868793;
+  letter-spacing: 0;
+  margin-right: 12rpx;
+}
+
+.content-top-today-num {
+  border: 1px solid #E9E9E9;
+  border-radius: 8px;
+  font-family: PingFangSC-Semibold;
+  font-size: 14px;
+  font-weight: bold;
+  color: #868793;
+  letter-spacing: 0;
+  padding: 0 40rpx;
+}
+
+.chart-top-box {
+  width: 100%;
+  height: 60rpx;
+  margin-top: 10rpx;
+}
+
+.chart-top-left-label {
+  width: 8rpx;
+  height: 28rpx;
+  background: #3163E8;
+  border-radius: 4rpx;
+  margin-left: 20rpx;
+}
+
+.splitlineimg {
+  height: 30rpx;
+  width: 10rpx;
+  margin-left: 20rpx;
+}
+
+.chart-top-left-title {
+  font-family: PingFangSC-Medium;
+  font-size: 12px;
+  color: #4A4A4A;
+  letter-spacing: 0;
+  margin-left: 12rpx;
+  font-weight: bold;
+}
+
+.chart-top-left-unit {
+  opacity: 0.6;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #868793;
+  letter-spacing: 0;
+  margin-left: 12rpx;
+}
+
+.chart-top-right {
+  background: #F6F6F6;
+  border: 1px solid #F0F0F0;
+  border-radius: 14px;
+  margin-right: 20rpx;
+}
+
+.chart-top-right-item {
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #B6B7BE;
+  letter-spacing: 0;
+  padding: 10rpx 18rpx;
+}
+
+.chart-active-btn {
+  color: #FFFFFF;
+  background: #3163E8;
+  border-radius: 14px;
+}

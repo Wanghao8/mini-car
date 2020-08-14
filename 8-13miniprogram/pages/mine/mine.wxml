@@ -1,0 +1,21 @@
+<view class="container">
+	<van-nav-bar title="我的">
+	</van-nav-bar>
+	<image class="minebg" src="../../assets/image/19mybg.png"></image>
+	<view class="card-box">
+		<view class="content">
+			<view class="card-top flexr0c">
+				<image class="avatar" src="../../assets/image/20mineavatar.png"></image>
+				<view class="userId">{{realname}}</view>
+			</view>
+			<view class="option flexrbc" bindtap="modify">
+				<view class="optiontxt">密码修改</view>
+				<image class="rightarrow" src="../../assets/image/13detailarrow.png"></image>
+			</view>
+			<view class="option flexrbc" bindtap="logout">
+				<view class="optiontxt">退出登录</view>
+				<image class="rightarrow" src="../../assets/image/13detailarrow.png"></image>
+			</view>
+		</view>
+	</view>
+</view>
