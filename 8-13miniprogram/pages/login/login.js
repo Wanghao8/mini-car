@@ -116,6 +116,7 @@ Page({
           wx.setStorageSync('userOreList', res.data.data.userOreList)
           wx.setStorageSync('userName', res.data.data.userName)
           wx.setStorageSync('realName', res.data.data.userCode)
+          wx.setStorageSync('photoBaseUrl', res.data.data.photoBaseUrl)
           // return
           setTimeout(function () {
             wx.switchTab({

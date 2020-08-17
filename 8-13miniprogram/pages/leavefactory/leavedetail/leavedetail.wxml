@@ -4,7 +4,8 @@
 		</van-nav-bar>
 	</view>
 	<view class="img-box">
-		<image class="img" src="../../../assets/image/16carimg.png"></image>
+		<!-- <image class="img" src="../../../assets/image/16carimg.png"></image> -->
+		<image class="img" src="{{url}}"></image>
 	</view>
 	<view class="detail-box">
 		<image class="detailbg" src="../../../assets/image/18detailbg.png"></image>
@@ -12,36 +13,36 @@
 			<view class="countnum-box flexr">
 				<view class="countnum-left flexc0c">
 					<view class="countnum-title">毛重(吨)</view>
-					<view class="countnum-num-left">57.54</view>
+					<view class="countnum-num-left">{{info.ALL_WEIGHT}}</view>
 				</view>
 				<view class="splitline"></view>
 				<view class="countnum-right flexc0c">
 					<view class="countnum-title">净重(吨)</view>
-					<view class="countnum-num-right">40.00</view>
+					<view class="countnum-num-right">{{info.NET_WEIGHT}}</view>
 				</view>
 			</view>
 			<view class="content-middle">
-				<view class="product-name">企业：<text class="subtext">东方希望铝</text></view>
-				<view class="car-name">运输车号：<text class="subtext">豫A38H45</text></view>
+				<view class="product-name">企业：<text class="subtext">{{info.ENTERPRISE_NAME}}</text></view>
+				<view class="car-name">矿种：<text class="subtext">{{info.ORE_NAME}}</text></view>
 			</view>
 			<view class="content-middle">
-				<view class="product-name">需方企业：<text class="subtext">东方希望铝</text></view>
-				<view class="car-name">目的地：<text class="subtext">登封市宣化镇山沟村</text></view>
+				<view class="product-name">需方企业：<text class="subtext">{{info.BUYER_NAME}}</text></view>
+				<view class="car-name">目的地：<text class="subtext">{{info.DEST_AREA}}</text></view>
 			</view>
 			<view class="content-bottom">
-				<view class="car-name">预约到场时间：<text class="subtext">登封市宣化镇山沟村</text></view>
-				<view class="car-name">实际到场时间：<text class="subtext">登封市宣化镇山沟村</text></view>
-				<view class="car-name">装货时间：<text class="subtext">登封市宣化镇山沟村</text></view>
-				<view class="car-name">出厂时间：<text class="subtext">登封市宣化镇山沟村</text></view>
-				<view class="car-name">装货司机：<text class="subtext">登封市宣化镇山沟村</text></view>
-				<view class="car-name">车牌号码：<text class="subtext">登封市宣化镇山沟村</text></view>
+				<view class="car-name">预约到场时间：<text class="subtext">{{info.ARR_TIME}}</text></view>
+				<view class="car-name">实际到场时间：<text class="subtext">{{info.CREATE_TIME}}</text></view>
+				<view class="car-name">装货时间：<text class="subtext">{{info.START_LOAD_TIME}}</text></view>
+				<view class="car-name">出厂时间：<text class="subtext">{{info.PASS_TIME}}</text></view>
+				<view class="car-name">装货司机：<text class="subtext">{{info.REAL_NAME}}</text></view>
+				<view class="car-name">车牌号码：<text class="subtext">{{info.PLATE_NUM}}</text></view>
 				<view class="flexr0c">
-					<view class="car-name">司机姓名：<text class="subtext">张三</text></view>
+					<view class="car-name">司机姓名：<text class="subtext">{{info.DRIVER_NAME}}</text></view>
 					<image bindtap="showphoneEvent" class="phoneimg" src="../../../assets/image/17phone.png"></image>
 				</view>
 			</view>
 			<view class="content-bottom">
-				<view class="staytime">停留时长：<text class="staytimesubtext">68分钟</text></view>
+				<view class="staytime">停留时长：<text class="staytimesubtext">{{info.MINUTES}}分钟</text></view>
 			</view>
 		</view>
 	</view>

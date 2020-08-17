@@ -7,7 +7,7 @@
 			{{monthList[monthIndex]}}
 		</picker>
 		<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-			<view class="tab-item {{currentTab==index?'active':''}}"  data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
+			<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
 		</scroll-view>
 	</view>
 	<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
@@ -18,13 +18,13 @@
 						<view class="flexc0c">
 							<view class="content-top-title">月度出厂车次/吨数</view>
 							<view class="content-top-num flexr0c">
-								<view class="content-top-num-left">2764</view>
+								<view class="content-top-num-left">{{monthCount.COUNT}}</view>
 								<view class="split-line">|</view>
-								<view class="content-top-num-right">2764</view>
+								<view class="content-top-num-right">{{monthCount.WEIGHT}}</view>
 							</view>
 							<view class="content-top-today-box flexr0c">
 								<view class="content-top-today">当日</view>
-								<view class="content-top-today-num">54车次/2765吨</view>
+								<view class="content-top-today-num">{{dayCount.COUNT}}车次/{{dayCount.WEIGHT}}吨</view>
 							</view>
 						</view>
 					</view>
@@ -76,6 +76,25 @@
 								<view class="chart-top-right-item {{needbtn==0?'':'chart-active-btn'}}" data-type="needweight" bindtap="toggleActive">吨数</view>
 							</view>
 						</view>
+						<view class="rank-tabel">
+							<view class="rank-tabel-item">
+								<view class="rank-title">渑池县聚宝建材有限公司</view>
+								<view class="flexr0c">
+									<view class="progress-bar">
+										<view class="progress" style="width:{{560}}rpx"></view>
+									</view>
+									<view class="progress-num">128</view>
+								</view>
+							</view>
+						</view>
+						<view class="unfold flexrcc" bindtap="fold" data-type="needunfold" hidden="{{!needfold}}">
+							<view class="unfold-title">展开</view>
+							<image src="../../assets/image/10openarrow.png"></image>
+						</view>
+						<view class="fold flexrcc" bindtap="fold" data-type="needfold" hidden="{{needfold}}">
+							<view class="fold-title">收起</view>
+							<image src="../../assets/image/11closearrow.png"></image>
+						</view>
 					</view>
 					<view class="ranktoaddress">
 						<view class="chart-top-box flexrbc">
@@ -87,6 +106,25 @@
 								<view class="chart-top-right-item {{destinationbtn==0?'chart-active-btn':''}} " data-type="destinationcar" bindtap="toggleActive">车次</view>
 								<view class="chart-top-right-item {{destinationbtn==0?'':'chart-active-btn'}}" data-type="destinationweight" bindtap="toggleActive">吨数</view>
 							</view>
+						</view>
+						<view class="rank-tabel">
+							<view class="rank-tabel-item">
+								<view class="rank-title">渑池县聚宝建材有限公司</view>
+								<view class="flexr0c">
+									<view class="progress-bar">
+										<view class="progress" style="width:{{560}}rpx"></view>
+									</view>
+									<view class="progress-num">128</view>
+								</view>
+							</view>
+						</view>
+						<view class="unfold flexrcc" bindtap="fold" data-type="desunfold" hidden="{{!destinationfold}}">
+							<view class="unfold-title">展开</view>
+							<image src="../../assets/image/10openarrow.png"></image>
+						</view>
+						<view class="fold flexrcc" bindtap="fold" data-type="desfold" hidden="{{destinationfold}}">
+							<view class="fold-title">收起</view>
+							<image src="../../assets/image/11closearrow.png"></image>
 						</view>
 					</view>
 				</view>

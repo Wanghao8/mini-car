@@ -1,5 +1,6 @@
 // pages/reservation/reservation.js
 var app = getApp();
+var req = require('../../utils/requestCommon.js')
 Page({
 
   /**
@@ -10,7 +11,10 @@ Page({
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    date: 0 //今日0，明日1，本周2，本月3
+    date: 1, //今日1，明日2，本周3，本月4
+    list: [],
+    countcar: 0, //预约车次
+    countweight: 0 //预约重量
   },
 
   //切换今日明日按钮
@@ -18,23 +22,27 @@ Page({
     switch (e.currentTarget.dataset.type) {
       case 'today':
         this.setData({
-          date: 0
+          date: 1
         })
+        this.getOreInfo(1)
         break;
       case 'tomorrow':
         this.setData({
-          date: 1
+          date: 2
         })
+        this.getOreInfo(2)
         break;
       case 'week':
         this.setData({
-          date: 2
+          date: 3
         })
+        this.getOreInfo(3)
         break;
       case 'month':
         this.setData({
-          date: 3
+          date: 4
         })
+        this.getOreInfo(4)
         break;
 
       default:
@@ -43,17 +51,15 @@ Page({
   },
 
 
-
-
-
-
-
-
   // 滚动切换标签样式
   switchTab: function (e) {
     this.setData({
-      currentTab: e.detail.current
+      currentTab: e.detail.current,
     });
+    this.setData({
+      oreId: this.data.oreList[this.data.currentTab].oreId
+    })
+    this.getOreInfo(1)
     this.checkCor();
   },
   // 点击标题切换当前页时改变样式
@@ -102,17 +108,21 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-    this.setData({
-      oreList: wx.getStorageSync('userOreList')
-    })
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      oreList: wx.getStorageSync('userOreList')
+    })
+    setTimeout(() => {
+      this.setData({
+        oreId: this.data.oreList[0].oreId
+      })
+      this.getOreInfo(1)
+    }, 100);
   },
 
   /**
@@ -148,5 +158,39 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  //接口部分
+  getOreInfo: function (timeType) {
+    let that = this
+    const data = {
+      modeCode: 'M8lg6eIzfft06WbtqrJlpWuAeqraZA9X', //功能码
+      sessionId: wx.getStorageSync('sessionId'),
+      pageIndex: 1,
+      pageSize: 10,
+      oreId: that.data.oreId,
+      oreIds: 'ede62421-816b-0872-a09f-cbd5d5a96b75,4492f52e-6b41-bddc-ab82-d3f461fcddfc',
+      timeType: timeType
+    }
+    req.requestAll(data).then(res => {
+      if (res.data.code == 1) {
+        console.log(res.data.data);
+        let resdata = res.data.data
+        let list = resdata.list
+        list.forEach((item) => {
+          item.hour = parseInt(parseInt(item.minutes) / 60)
+          item.minute = parseInt(item.minutes) % 60
+        })
+        that.setData({
+          list: list,
+          countcar: resdata.countWeight.COUNT,
+          countweight: resdata.countWeight.WEIGHT
+        })
+      } else {
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+        })
+      }
+    })
   }
 })

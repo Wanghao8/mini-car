@@ -73,7 +73,8 @@
 
 .detailbg {
   width: 742rpx;
-  height: 996rpx;
+  /* height: 996rpx; */
+  height: 1080rpx;
   margin-left: 4rpx;
   z-index: 1;
   margin-top: -14rpx;

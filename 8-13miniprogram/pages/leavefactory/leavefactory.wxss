@@ -31,6 +31,10 @@
   letter-spacing: 0 !important;
 }
 
+.van-hairline--bottom:after {
+  border: none !important;
+}
+
 .monthpicker {
   display: inline;
   position: absolute;
@@ -166,17 +170,18 @@
 
 .content-item-box {
   width: 100%;
-  height: 200rpx;
-  margin-bottom: 16rpx;
-  background-color: #fff;
-  overflow: hidden;
+  /* height: 200rpx; */
+  background-color: #f9f9f9;
+  overflow: auto;
+  margin-bottom: 80rpx;
 }
 
 .content-item {
   width: 680rpx;
-  height: 180rpx;
+  /* height: 180rpx; */
+  margin-bottom: 16rpx;
   background-color: #fff;
-  margin: 20rpx;
+  padding: 20rpx;
 }
 
 /* .content-item-bottom {
@@ -206,6 +211,15 @@
   color: #4A4A4A;
   letter-spacing: 0;
   font-weight: 600;
+}
+
+.company {
+  width: 300rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
 }
 
 .hour {
@@ -264,10 +278,11 @@
   height: 40rpx;
 }
 
-.content-item-bottom-right{
+.content-item-bottom-right {
   width: 200rpx;
   margin-right: 20rpx;
 }
+
 .content-item-right-left-title {
   font-family: PingFangSC-Regular;
   font-size: 14px;

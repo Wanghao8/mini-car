@@ -30,7 +30,9 @@
   color: #FFFFFF !important;
   letter-spacing: 0 !important;
 }
-
+.van-hairline--bottom:after{
+  border: none!important;
+}
 .monthpicker {
   display: inline;
   position: absolute;
@@ -126,6 +128,7 @@
 .countnum-box {
   background-color: #fff;
   height: 160rpx;
+  margin-bottom: 16rpx;
 }
 
 .countnum-left,
@@ -166,17 +169,18 @@
 
 .content-item-box {
   width: 100%;
-  height: 200rpx;
-  margin-bottom: 16rpx;
-  background-color: #fff;
-  overflow: hidden;
+  /* height: 200rpx; */
+  background-color: #f9f9f9;
+  overflow: auto;
+  margin-bottom: 80rpx;
 }
 
 .content-item {
   width: 680rpx;
-  height: 180rpx;
+  /* height: 180rpx; */
+  margin-bottom: 16rpx;
   background-color: #fff;
-  margin: 20rpx;
+  padding: 20rpx;
 }
 
 /* .content-item-bottom {
@@ -189,7 +193,9 @@
   letter-spacing: 0;
   font-weight: 600;
 }
-
+.nomore{
+  height: 60rpx;
+}
 .product-name,
 .car-name,
 .car-time {

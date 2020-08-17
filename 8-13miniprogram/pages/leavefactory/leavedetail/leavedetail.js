@@ -24,7 +24,9 @@ Page({
     })
   },
   onClose() {
-    this.setData({ showphone: false });
+    this.setData({
+      showphone: false
+    });
   },
 
   dial(e) {
@@ -37,7 +39,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      info: JSON.parse(options.info)
+    })
   },
 
   /**
@@ -51,7 +55,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      imgurl: wx.getStorageSync('photoBaseUrl')
+    })
+    let url = this.data.imgurl + this.data.info.DTL_IMG
+    this.setData({
+      url: url
+    })
   },
 
   /**

@@ -1,7 +1,6 @@
 // pages/index/index.js
 import * as echarts from '../../components/ec-canvas/echarts';
 var req = require('../../utils/requestCommon.js');
-var time = require('../../utils/util.js');
 var app = getApp();
 
 function initChart(canvas, width, height) {
@@ -130,16 +129,19 @@ Page({
     month: '八月',
     monthIndex: (new Date().getMonth()),
     monthList: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月', ],
-    todaybtn: 0,
-    monthbtn: 0,
-    needbtn: 0,
-    destinationbtn: 0,
+    todaybtn: 0, //切换车次吨数（今日）
+    monthbtn: 0, //切换车次吨数（本月）
+    needbtn: 0, //切换车次吨数（需方）
+    destinationbtn: 0, //切换车次吨数（目的地）
+    needfold: true, //需方列表展开收起
+    destinationfold: true, //目的地列表展开收起
   },
   // picker选择月份
   chooseMonth(e) {
     this.setData({
       monthIndex: e.detail.value
     })
+    this.getOreInfo()
   },
   // echart切车次重量按钮
   toggleActive: function (e) {
@@ -182,6 +184,33 @@ Page({
       case 'destinationweight':
         this.setData({
           destinationbtn: 1
+        })
+        break;
+      default:
+        break;
+    }
+  },
+  //展开收起折叠
+  fold: function (e) {
+    switch (e.currentTarget.dataset.type) {
+      case 'needfold':
+        this.setData({
+          needfold: true
+        })
+        break;
+      case 'needunfold':
+        this.setData({
+          needfold: false
+        })
+        break;
+      case 'desfold':
+        this.setData({
+          destinationfold: true
+        })
+        break;
+      case 'desunfold':
+        this.setData({
+          destinationfold: false
         })
         break;
       default:
@@ -318,7 +347,29 @@ Page({
     }
     req.requestAll(data).then(res => {
       if (res.data.code == 1) {
-        console.log(res);
+        console.log(res.data.data);
+        let resdata = res.data.data
+        let monthx = []
+        let monthcar = []
+        let monthweight = []
+        resdata.monthsCountWeight.forEach((item) => {
+          monthx.push(item.PASSDATE)
+          monthcar.push(item.CNT)
+          monthweight.push(item.NET_WEIGHT)
+        })
+        let dayx = []
+        let daycar = []
+        let dayweight = []
+        resdata.DaysCountWeight.forEach((item) => {
+          dayx.push(item.PASSDATE)
+          daycar.push(item.CNT)
+          dayweight.push(item.NET_WEIGHT)
+        })
+        console.log(monthx, monthcar, monthweight,dayx,daycar,dayweight);
+        that.setData({
+          monthCount: resdata.monthCountWeight,
+          dayCount: resdata.currentDayCountWeight
+        })
       } else {
         wx.showToast({
           title: res.data.msg,

@@ -21,7 +21,9 @@
   color: #FFFFFF !important;
   letter-spacing: 0 !important;
 }
-
+.van-hairline--bottom:after{
+  border: none!important;
+}
 .minebg {
   width: 750rpx;
   height: 340rpx;

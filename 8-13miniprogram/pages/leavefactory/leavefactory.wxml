@@ -5,7 +5,7 @@
 		</van-nav-bar>
 		<view>
 			<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-					<view class="tab-item {{currentTab==index?'active':''}}"  data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
+				<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
 			</scroll-view>
 		</view>
 		<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
@@ -21,31 +21,32 @@
 
 						<!-- <view class="content-item-box" wx:for=""> -->
 
-						<view class="content-item-box" hidden="{{0}}">
-							<view class="content-item">
-								<view class="company-name">东方希望铝</view>
+						<view class="content-item-box" hidden="{{!count}}">
+							<view class="content-item" wx:for="{{list}}" wx:key="index">
+								<view class="company-name">{{item.ORE_NAME}}</view>
 								<view class="content-item-bottom flexrbc">
 									<view class="content-item-bottom-left flexc">
-										<view class="car-name">出厂车辆：<text class="subtext">豫A38H45</text></view>
-										<view class="product-name">需方企业：<text class="subtext">渑池县恒祥矿业有限公司</text></view>
-										<view class="car-time">出厂时间：<text class="subtext">2020-08-10 16:30</text></view>
+										<view class="car-name">出厂车辆：<text class="subtext">{{item.PLATE_NUM}}</text></view>
+										<view class="product-name flexr">需方企业：<view class="subtext company">{{item.BUYER_NAME}}</view>
+										</view>
+										<view class="car-time">出厂时间：<text class="subtext">{{item.PASS_TIME}}</text></view>
 									</view>
-									<view class="content-item-bottom-right flexrbc" bindtap="toDettail">
+									<view class="content-item-bottom-right flexrbc" bindtap="toDettail" data-info="{{item}}">
 										<view class="content-item-right-left flexc0c">
 											<view class="content-item-right-left-title">净重(吨)</view>
-											<view class="content-item-right-left-num">40.10</view>
+											<view class="content-item-right-left-num">{{item.NET_WEIGHT}}</view>
 										</view>
 										<image class="detailimg" src="../../assets/image/13detailarrow.png"></image>
 									</view>
 								</view>
 							</view>
+							<view class="tips" hidden="{{!count}}">没有更多了~</view>
 						</view>
-						<view class="null-box flexc0c" hidden="{{1}}">
+						<view class="null-box flexc0c" hidden="{{count}}">
 							<image class="null-img" src="../../assets/image/14noleave.png"></image>
 							<view class="tips">暂无出厂车辆</view>
 						</view>
 					</view>
-					<view class="tips">没有更多了~</view>
 
 				</scroll-view>
 			</swiper-item>

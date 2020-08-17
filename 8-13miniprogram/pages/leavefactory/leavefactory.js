@@ -49,15 +49,16 @@ Page({
 
 
 
-
-
-
   // 滚动切换标签样式
   switchTab: function (e) {
     this.setData({
       currentTab: e.detail.current
     });
+    this.setData({
+      oreId: this.data.oreList[this.data.currentTab].oreId
+    })
     this.checkCor();
+    this.getleaveInfo(1)
   },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
@@ -83,9 +84,10 @@ Page({
     }
   },
 
-  toDettail: function () {
+  toDettail: function (e) {
+    let info = e.currentTarget.dataset.info
     wx.navigateTo({
-      url: './leavedetail/leavedetail',
+      url: './leavedetail/leavedetail?info=' + JSON.stringify(info),
     })
   },
   /**
@@ -112,7 +114,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
@@ -120,9 +122,13 @@ Page({
    */
   onShow: function () {
     if (wx.getStorageSync('userOreList')) {
+      let oreList = wx.getStorageSync('userOreList')
+      oreList.unshift({
+        oreName: '全部'
+      })
       this.setData({
         year: new Date().getFullYear(),
-        oreList: wx.getStorageSync('userOreList')
+        oreList: oreList
       })
       setTimeout(() => {
         this.setData({
@@ -175,15 +181,21 @@ Page({
     const data = {
       modeCode: 'VJLUz1JW9I7crGvw4LWYqqUeMMxKq9mo', //功能码
       sessionId: wx.getStorageSync('sessionId'),
-      pageIndex:1,
-      pageSize:10,
+      pageIndex: 1,
+      pageSize: 10,
       oreId: that.data.oreId,
-      oreIds:'ede62421-816b-0872-a09f-cbd5d5a96b75,4492f52e-6b41-bddc-ab82-d3f461fcddfc',
-      timeType:type
+      oreIds: 'ede62421-816b-0872-a09f-cbd5d5a96b75,4492f52e-6b41-bddc-ab82-d3f461fcddfc',
+      timeType: type
     }
     req.requestAll(data).then(res => {
       if (res.data.code == 1) {
         console.log(res);
+        let resdata = res.data.data
+        let list = resdata.list
+        that.setData({
+          list: list,
+          count: resdata.count
+        })
       } else {
         wx.showToast({
           title: res.data.msg,
