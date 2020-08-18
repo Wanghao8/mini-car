@@ -58,7 +58,7 @@ Page({
       oreId: this.data.oreList[this.data.currentTab].oreId
     })
     this.checkCor();
-    this.getleaveInfo(1)
+    this.getleaveInfo(this.data.date)
   },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
@@ -101,7 +101,7 @@ Page({
         var clientHeight = res.windowHeight,
           clientWidth = res.windowWidth,
           rpxR = 750 / clientWidth;
-        var calc = clientHeight * rpxR - 130;
+        var calc = clientHeight * rpxR - 135;
         console.log(calc)
         that.setData({
           winHeight: calc
@@ -123,12 +123,18 @@ Page({
   onShow: function () {
     if (wx.getStorageSync('userOreList')) {
       let oreList = wx.getStorageSync('userOreList')
+      let oreIds = []
+      oreList.forEach((item) => {
+        oreIds.push(item.oreId)
+      })
+      oreIds = oreIds.join(',')
       oreList.unshift({
         oreName: '全部'
       })
       this.setData({
         year: new Date().getFullYear(),
-        oreList: oreList
+        oreList: oreList,
+        oreIds: oreIds
       })
       setTimeout(() => {
         this.setData({
@@ -182,14 +188,15 @@ Page({
       modeCode: 'VJLUz1JW9I7crGvw4LWYqqUeMMxKq9mo', //功能码
       sessionId: wx.getStorageSync('sessionId'),
       pageIndex: 1,
-      pageSize: 10,
+      pageSize: 20,
       oreId: that.data.oreId,
-      oreIds: 'ede62421-816b-0872-a09f-cbd5d5a96b75,4492f52e-6b41-bddc-ab82-d3f461fcddfc',
       timeType: type
+    }
+    if (that.data.currentTab == 0) {
+      data.oreIds = that.data.oreIds
     }
     req.requestAll(data).then(res => {
       if (res.data.code == 1) {
-        console.log(res);
         let resdata = res.data.data
         let list = resdata.list
         that.setData({

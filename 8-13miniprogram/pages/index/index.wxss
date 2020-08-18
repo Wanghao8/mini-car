@@ -61,6 +61,7 @@
   font-size: 32rpx;
   white-space: nowrap;
   border: none;
+  z-index: 3;
 }
 
 .tab-item {
@@ -300,4 +301,12 @@
   width: 32rpx;
   height: 20rpx;
   margin-left: 10rpx;
+}
+
+/* echarts部分 */
+.chart1-box,.chart2-box,.chart3-box{
+  width: 660rpx;
+  height: 320rpx;
+  /* border: 1px solid #000; */
+  margin: 0 20rpx;
 }

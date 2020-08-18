@@ -2,115 +2,14 @@
 import * as echarts from '../../components/ec-canvas/echarts';
 var req = require('../../utils/requestCommon.js');
 var app = getApp();
+let chartLine;
+let chartBar;
+let chartPie;
+let lineoption = {}
+let baroption = {}
+let pieoption = {}
+let piedata = []
 
-function initChart(canvas, width, height) {
-  const chart = echarts.init(canvas, null, {
-    width: width,
-    height: height
-  });
-  canvas.setChart(chart);
-
-  var option = {
-    color: ['#34A9FF ', '#F3AC1E'],
-    xAxis: [{
-      type: 'category',
-      axisLine: {
-        show: true,
-        lineStyle: {
-          color: "#0357A2"
-        }
-      },
-      splitArea: {
-        color: '#f00',
-        lineStyle: {
-          color: '#f00'
-        },
-      },
-      inverse: true,
-      axisLabel: {
-        lineStyle: {
-          color: "#BEE2FB"
-        },
-        textStyle: {
-          color: '#BEE2FB',
-        },
-      },
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: '#0357A2',
-          type: 'solid'
-        }
-      },
-      boundaryGap: false,
-      data: [1, 2, 3, 4],
-    }],
-    yAxis: [{
-      type: 'value',
-      // nameGap: 1,
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: '#0357A2',
-          type: 'dashed'
-        }
-      },
-      axisLine: {
-        show: true,
-        lineStyle: {
-          color: "#0357A2"
-        }
-      },
-      axisLabel: {
-        show: true,
-        // margin: 20,
-        textStyle: {
-          color: '#BEE2FB',
-        },
-      },
-      axisTick: {
-        show: true,
-        lineStyle: {
-          color: "#6c50f3"
-        }
-      },
-    }],
-    series: [{
-      name: '周比',
-      type: 'line',
-      smooth: true,
-      symbol: 'none',
-      lineStyle: {
-        normal: {
-          color: 'rgba(11,120,227,1)',
-        },
-      },
-      itemStyle: {
-        color: "#52A0FC",
-        borderColor: "#fff",
-        borderWidth: 3,
-      },
-      areaStyle: {
-        normal: {
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-              offset: 0,
-              color: 'rgba(11,120,227,0.17)'
-            },
-            {
-              offset: 1,
-              color: 'rgba(64,161,255,1) '
-            }
-          ], false),
-          shadowColor: 'rgba(11,120,227,0.17)',
-          shadowBlur: 20
-        }
-      },
-      data: [1, 2, 3, 4]
-    }]
-  };
-  chart.setOption(option);
-  return chart;
-}
 Page({
 
   /**
@@ -122,10 +21,178 @@ Page({
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     //echarts部分
-    ec: {
-      onInit: initChart
+    ecLine: {
+      onInit: function (canvas, width, height, dpr) {
+        chartLine = echarts.init(canvas, null, {
+          width: width,
+          height: height,
+          devicePixelRatio: dpr // new
+        });
+        canvas.setChart(chartLine);
+        lineoption = {
+          grid: {
+            top: '10%',
+            bottom: '15%',
+            right: '5%',
+            left: '8%'
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            inverse: true,
+            axisLabel: {
+              show: true
+            },
+            data: [],
+            axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
+          },
+          yAxis: {
+            x: 'center',
+            type: 'value',
+            axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              lineStyle: {
+                type: 'dashed'
+              }
+            },
+          },
+          series: [{
+            name: 'A',
+            type: 'line',
+            smooth: true,
+            showSymbol: false,
+            lineStyle: {
+              normal: {
+                color: 'rgba(49,99,232,1)',
+              },
+            },
+            areaStyle: {
+              normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: 'rgba(49,99,232,0.5)'
+                  },
+                  {
+                    offset: 1,
+                    color: 'rgba(49,99,232,0)'
+                  }
+                ], false),
+                shadowColor: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: 'rgba(49,99,232,0.8)'
+                  },
+                  {
+                    offset: 1,
+                    color: 'rgba(49,99,232,0)'
+                  }
+                ], false),
+                shadowBlur: 20
+              }
+            },
+            data: []
+          }]
+        }
+        chartLine.setOption(lineoption, true)
+        return chartLine;
+      }
+    },
+    ecbar: {
+      onInit: function (canvas, width, height, dpr) {
+        chartBar = echarts.init(canvas, null, {
+          width: width,
+          height: height,
+          devicePixelRatio: dpr // new
+        });
+        canvas.setChart(chartBar);
+        baroption = {
+          grid: {
+            top: '10%',
+            bottom: '15%',
+            right: '5%',
+            left: '15%'
+          },
+          yAxis: [{
+            axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: false
+            },
+          }],
+          xAxis: {
+            type: 'category',
+            inverse: true,
+            axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: false
+            },
+            data: []
+          },
+          color: ['#3163E8'],
+          series: {
+            name: '车次',
+            type: 'bar',
+            // zlevel: 1,
+            label: {
+              show: false
+            },
+            barWidth: 10,
+            itemStyle: {
+              barBorderRadius: 5
+            },
+            data: [],
+          }
+        }
+        chartBar.setOption(baroption, true)
+        return chartBar;
+      }
+    },
+    ecpie: {
+      onInit: function (canvas, width, height, dpr) {
+        chartPie = echarts.init(canvas, null, {
+          width: width,
+          height: height,
+          devicePixelRatio: dpr // new
+        });
+        canvas.setChart(chartPie);
+        pieoption = {
+          color: ["#3163E8", "rgba(49,99,232,0.60)", "rgba(49,99,232,0.40)", "rgba(49,99,232,0.20)"],
+          series: {
+            label: {
+              normal: {
+                fontSize: 12
+              }
+            },
+            type: 'pie',
+            center: ['50%', '50%'],
+            radius: [50, 70],
+            data: piedata
+          }
+        }
+        chartPie.setOption(pieoption, true)
+        return chartPie;
+      }
     },
     // 页面部分
+    once: 1, //首次初始化图表
     month: '八月',
     monthIndex: (new Date().getMonth()),
     monthList: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月', ],
@@ -150,21 +217,33 @@ Page({
         this.setData({
           todaybtn: 0
         })
+        lineoption.series.data = this.data.daycar
+        console.log(lineoption.series.data);
+        chartLine.setOption(lineoption, true)
         break;
       case 'todayweight':
         this.setData({
           todaybtn: 1
         })
+        lineoption.series.data = this.data.dayweight
+        console.log(lineoption.series.data);
+        chartLine.setOption(lineoption, true)
         break;
       case 'monthcar':
         this.setData({
           monthbtn: 0
         })
+        baroption.series.data = this.data.monthcar
+        console.log(baroption.series.data);
+        chartBar.setOption(baroption, true)
         break;
       case 'monthweight':
         this.setData({
           monthbtn: 1
         })
+        baroption.series.data = this.data.monthweight
+        console.log(baroption.series.data);
+        chartBar.setOption(baroption, true)
         break;
       case 'needcar':
         this.setData({
@@ -217,6 +296,17 @@ Page({
         break;
     }
   },
+  // 是否登陆过，若在别的地方登陆，跳转登录页
+  isLoged: function (msg) {
+    // if (res.data.msg.indexOf('你') != -1) {
+    if (msg.indexOf('你') != -1) {
+      let timeout1 = setTimeout(function () {
+        wx.navigateTo({
+          url: '../login/login',
+        })
+      }, 2000)
+    }
+  },
   // 滚动切换标签样式
   switchTab: function (e) {
     this.setData({
@@ -237,6 +327,10 @@ Page({
       this.setData({
         currentTab: cur
       })
+      this.setData({
+        oreId: this.data.oreList[this.data.currentTab].oreId
+      })
+      this.getOreInfo()
     }
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
@@ -300,7 +394,6 @@ Page({
       year: new Date().getFullYear()
     })
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -335,6 +428,16 @@ Page({
   onShareAppMessage: function () {
 
   },
+  //初始化chart
+  initChart: function () {
+    lineoption.xAxis.data = this.data.dayx
+    lineoption.series.data = this.data.daycar
+    baroption.xAxis.data = this.data.monthx
+    baroption.series.data = this.data.monthcar
+    console.log(lineoption, baroption, 111111);
+    chartBar.setOption(baroption, true)
+    chartLine.setOption(lineoption, true)
+  },
   //接口部分
   getOreInfo: function () {
     let that = this
@@ -347,13 +450,13 @@ Page({
     }
     req.requestAll(data).then(res => {
       if (res.data.code == 1) {
-        console.log(res.data.data);
+        console.log(res.data.code);
         let resdata = res.data.data
         let monthx = []
         let monthcar = []
         let monthweight = []
         resdata.monthsCountWeight.forEach((item) => {
-          monthx.push(item.PASSDATE)
+          monthx.push(item.PASSDATE.substr(-2))
           monthcar.push(item.CNT)
           monthweight.push(item.NET_WEIGHT)
         })
@@ -361,20 +464,48 @@ Page({
         let daycar = []
         let dayweight = []
         resdata.DaysCountWeight.forEach((item) => {
-          dayx.push(item.PASSDATE)
+          dayx.push(item.PASSDATE.substr(-2))
           daycar.push(item.CNT)
           dayweight.push(item.NET_WEIGHT)
         })
-        console.log(monthx, monthcar, monthweight,dayx,daycar,dayweight);
+        resdata.oreWeight.forEach((item) => {
+          item.name = item.ORENAME
+          item.value = item.NETWEIGHT
+        })
         that.setData({
           monthCount: resdata.monthCountWeight,
-          dayCount: resdata.currentDayCountWeight
+          dayCount: resdata.currentDayCountWeight,
+          dayx,
+          daycar,
+          dayweight,
+          monthx,
+          monthcar,
+          monthweight,
+          needcarshort: resdata.tenCountBuyer.slice(0, 4),
+          needcarlong: resdata.tenCountBuyer,
+          needweightshort: resdata.tenWeightBuyer.slice(0, 4),
+          needweightlong: resdata.tenWeightBuyer,
+          descarshort: resdata.tenCountDestArea.slice(0, 4),
+          descarlong: resdata.tenCountDestArea,
+          desweightshort: resdata.tenWeightDestArea.slice(0, 4),
+          desweightlong: resdata.tenWeightDestArea
+        })
+        if (that.data.once == 1) {
+          that.initChart()
+        }
+        pieoption.series.data = resdata.oreWeight
+        console.log(pieoption.series, resdata.oreWeight);
+
+        chartPie.setOption(pieoption, true)
+        that.setData({
+          once: 0
         })
       } else {
         wx.showToast({
           title: res.data.msg,
           icon: 'none',
         })
+        that.isLoged(res.data.msg)
       }
     })
   }

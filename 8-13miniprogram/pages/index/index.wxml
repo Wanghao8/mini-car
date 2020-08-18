@@ -1,15 +1,13 @@
 <!--pages/index/index.wxml-->
 <view class="container">
-	<view class="top-blue">
-		<van-nav-bar title="首页">
-		</van-nav-bar>
-		<picker class="monthpicker" bindchange="chooseMonth" value="{{monthIndex}}" range="{{monthList}}">
-			{{monthList[monthIndex]}}
-		</picker>
-		<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-			<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
-		</scroll-view>
-	</view>
+	<van-nav-bar title="首页">
+	</van-nav-bar>
+	<picker class="monthpicker" bindchange="chooseMonth" value="{{monthIndex}}" range="{{monthList}}">
+		{{monthList[monthIndex]}}
+	</picker>
+	<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+		<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
+	</scroll-view>
 	<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
 		<swiper-item wx:for="{{oreList}}" wx:key="index">
 			<scroll-view scroll-y="true" class="scoll-h">
@@ -41,7 +39,9 @@
 							</view>
 						</view>
 						<!-- echarts表1 -->
-						<!-- <ec-canvas id="mychart-dom-line" width='750rpx' canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas> -->
+						<view class="chart1-box">
+							<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" force-use-old-canvas="true" ec="{{ ecLine }}"></ec-canvas>
+						</view>
 					</view>
 					<view class="monthchart">
 						<view class="chart-top-box flexrbc">
@@ -55,7 +55,9 @@
 								<view class="chart-top-right-item {{monthbtn==0?'':'chart-active-btn'}}" data-type="monthweight" bindtap="toggleActive">吨数</view>
 							</view>
 						</view>
-						<view class="chart-month"></view>
+						<view class="chart2-box">
+							<ec-canvas id="mychart-dom-line" force-use-old-canvas="true" canvas-id="mychart-line" ec="{{ ecbar }}"></ec-canvas>
+						</view>
 					</view>
 					<view class="typeperchart">
 						<view class="chart-top-box flexrbc">
@@ -63,6 +65,9 @@
 								<image class="splitlineimg" src="../../assets/image/8splitline.png"></image>
 								<view class="chart-top-left-title">矿种吨数占比</view>
 							</view>
+						</view>
+						<view class="chart3-box">
+							<ec-canvas id="mychart-dom-line" force-use-old-canvas="true" canvas-id="mychart-line" ec="{{ ecpie }}"></ec-canvas>
 						</view>
 					</view>
 					<view class="rankcompany">
@@ -77,13 +82,22 @@
 							</view>
 						</view>
 						<view class="rank-tabel">
-							<view class="rank-tabel-item">
-								<view class="rank-title">渑池县聚宝建材有限公司</view>
+							<view class="rank-tabel-item" hidden="{{needbtn==1}}" wx:for="{{needfold?needcarshort:needcarlong}}" wx:key="index">
+								<view class="rank-title">{{item.ENTERPRISE_NAME}}</view>
 								<view class="flexr0c">
 									<view class="progress-bar">
-										<view class="progress" style="width:{{560}}rpx"></view>
+										<view class="progress" style="width:{{item.COUNT/35*560}}rpx"></view>
 									</view>
-									<view class="progress-num">128</view>
+									<view class="progress-num">{{item.COUNT}}</view>
+								</view>
+							</view>
+							<view class="rank-tabel-item" hidden="{{needbtn==0}}" wx:for="{{needfold?needweightshort:needweightlong}}" wx:key="index">
+								<view class="rank-title">{{item.ENTERPRISE_NAME}}</view>
+								<view class="flexr0c">
+									<view class="progress-bar">
+										<view class="progress" style="width:{{item.SUM_WEIGHT/35*560}}rpx"></view>
+									</view>
+									<view class="progress-num">{{item.SUM_WEIGHT}}</view>
 								</view>
 							</view>
 						</view>
@@ -108,13 +122,22 @@
 							</view>
 						</view>
 						<view class="rank-tabel">
-							<view class="rank-tabel-item">
-								<view class="rank-title">渑池县聚宝建材有限公司</view>
+							<view class="rank-tabel-item" hidden="{{destinationbtn==1}}" wx:for="{{destinationfold?descarshort:descarlong}}" wx:key="index">
+								<view class="rank-title">{{item.DEST_AREA}}</view>
 								<view class="flexr0c">
 									<view class="progress-bar">
-										<view class="progress" style="width:{{560}}rpx"></view>
+										<view class="progress" style="width:{{item.COUNT/35*560}}rpx"></view>
 									</view>
-									<view class="progress-num">128</view>
+									<view class="progress-num">{{item.COUNT}}</view>
+								</view>
+							</view>
+							<view class="rank-tabel-item" hidden="{{destinationbtn==0}}" wx:for="{{destinationfold?desweightshort:desweightlong}}" wx:key="index">
+								<view class="rank-title">{{item.DEST_AREA}}</view>
+								<view class="flexr0c">
+									<view class="progress-bar">
+										<view class="progress" style="width:{{item.SUM_WEIGHT/35*560}}rpx"></view>
+									</view>
+									<view class="progress-num">{{item.SUM_WEIGHT}}</view>
 								</view>
 							</view>
 						</view>

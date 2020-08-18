@@ -59,7 +59,7 @@ Page({
     this.setData({
       oreId: this.data.oreList[this.data.currentTab].oreId
     })
-    this.getOreInfo(1)
+    this.getOreInfo(this.data.date)
     this.checkCor();
   },
   // 点击标题切换当前页时改变样式
@@ -96,7 +96,7 @@ Page({
         var clientHeight = res.windowHeight,
           clientWidth = res.windowWidth,
           rpxR = 750 / clientWidth;
-        var calc = clientHeight * rpxR - 130;
+        var calc = clientHeight * rpxR - 135;
         console.log(calc)
         that.setData({
           winHeight: calc
@@ -166,7 +166,7 @@ Page({
       modeCode: 'M8lg6eIzfft06WbtqrJlpWuAeqraZA9X', //功能码
       sessionId: wx.getStorageSync('sessionId'),
       pageIndex: 1,
-      pageSize: 10,
+      pageSize: 20,
       oreId: that.data.oreId,
       oreIds: 'ede62421-816b-0872-a09f-cbd5d5a96b75,4492f52e-6b41-bddc-ab82-d3f461fcddfc',
       timeType: timeType
