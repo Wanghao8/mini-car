@@ -147,7 +147,7 @@ onChange(event) {
         var clientHeight = res.windowHeight,
           clientWidth = res.windowWidth,
           rpxR = 750 / clientWidth;
-        var calc = clientHeight * rpxR - 128;
+        var calc = clientHeight * rpxR - 160;
         console.log(calc)
         that.setData({
           winHeight: calc
@@ -170,7 +170,7 @@ onChange(event) {
     })
     setTimeout(() => {
       this.setData({
-        oreId: this.data.oreList[0].oreId
+        oreId: this.data.oreList[this.data.currentTab].oreId
       })
       this.getOreInfo(this.data.date)
     }, 100);

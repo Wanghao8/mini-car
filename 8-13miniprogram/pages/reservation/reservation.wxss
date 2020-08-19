@@ -95,7 +95,7 @@
   height: 100%;
   background: #f9f9f9;
   position: absolute;
-  top: 70rpx;
+  top: 100rpx;
 }
 
 .swiper-item-box {
@@ -173,7 +173,7 @@
   /* height: 200rpx; */
   background-color: #f9f9f9;
   overflow: auto;
-  margin-bottom: 80rpx;
+  margin-bottom: 220rpx;
 }
 
 .content-item {

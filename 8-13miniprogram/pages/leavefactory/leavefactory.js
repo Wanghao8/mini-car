@@ -187,7 +187,7 @@ onChange(event) {
       })
       setTimeout(() => {
         this.setData({
-          oreId: this.data.oreList[0].oreId
+          oreId: this.data.oreList[this.data.currentTab].oreId
         })
         this.getleaveInfo(this.data.date)
       }, 100);

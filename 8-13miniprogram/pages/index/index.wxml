@@ -41,8 +41,8 @@
 						</view>
 						<!-- echarts表1 -->
 						<view class="chart1-box">
-							<!-- <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" force-use-old-canvas="true" data-a="ecline{{index+1}}" ec="{{ "ecLine"+(index+1) }}"></ec-canvas> -->
-							<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" force-use-old-canvas="true" data-a="ecline{{index+1}}" ec="{{ecline[index]}}"></ec-canvas>
+							<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ecline[index]}}"></ec-canvas>
+							<!-- <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" force-use-old-canvas="true" ec="{{ecline[index]}}"></ec-canvas> -->
 						</view>
 					</view>
 					<view class="monthchart">
@@ -58,7 +58,8 @@
 							</view>
 						</view>
 						<view class="chart2-box">
-							<ec-canvas id="mychart-dom-line" force-use-old-canvas="true" canvas-id="mychart-line" ec="{{ ecbar[index] }}"></ec-canvas>
+							<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ecbar[index] }}"></ec-canvas>
+							<!-- <ec-canvas id="mychart-dom-line" force-use-old-canvas="true" canvas-id="mychart-line" ec="{{ ecbar[index] }}"></ec-canvas> -->
 						</view>
 					</view>
 					<view class="typeperchart">
@@ -69,7 +70,8 @@
 							</view>
 						</view>
 						<view class="chart3-box">
-							<ec-canvas id="mychart-dom-line" force-use-old-canvas="true" canvas-id="mychart-line" ec="{{ ecpie[index] }}"></ec-canvas>
+							<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ecpie[index] }}"></ec-canvas>
+							<!-- <ec-canvas id="mychart-dom-line" force-use-old-canvas="true" canvas-id="mychart-line" ec="{{ ecpie[index] }}"></ec-canvas> -->
 						</view>
 					</view>
 					<view class="rankcompany">

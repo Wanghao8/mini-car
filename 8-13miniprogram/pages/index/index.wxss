@@ -98,7 +98,7 @@
   height: 100%;
   background: #f9f9f9;
   position: absolute;
-  top: 70rpx;
+  top: 100rpx;
 }
 
 .content-box {
@@ -136,7 +136,7 @@
   margin-top: 16rpx;
 }
 .ranktoaddress{
-  margin-bottom: 50rpx;
+  margin-bottom: 110rpx;
 }
 .content-top-title {
   font-family: PingFangSC-Regular;

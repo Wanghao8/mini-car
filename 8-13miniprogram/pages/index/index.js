@@ -512,7 +512,7 @@ Page({
         var clientHeight = res.windowHeight,
           clientWidth = res.windowWidth,
           rpxR = 750 / clientWidth;
-        var calc = clientHeight * rpxR - 128;
+        var calc = clientHeight * rpxR - 160;
         // var calc = clientHeight * rpxR - 200;
         console.log(calc)
         that.setData({
@@ -545,7 +545,7 @@ Page({
       })
       setTimeout(() => {
         this.setData({
-          oreId: this.data.oreList[0].oreId
+          oreId: this.data.oreList[this.data.currentTab].oreId
         })
         this.getOreInfo(this.data.currentTab)
       }, 100);
@@ -666,7 +666,6 @@ Page({
     }
     req.requestAll(data).then(res => {
       if (res.data.code == 1) {
-        console.log(res.data.code);
         let resdata = res.data.data
         let monthx = []
         let monthcar = []
