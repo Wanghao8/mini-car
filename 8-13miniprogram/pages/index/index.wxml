@@ -5,11 +5,12 @@
 	<picker class="monthpicker" bindchange="chooseMonth" value="{{monthIndex}}" range="{{monthList}}">
 		{{monthList[monthIndex]}}
 	</picker>
-	<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-		<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
-	</scroll-view>
+
 	<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
 		<swiper-item wx:for="{{oreList}}" wx:key="index">
+			<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+				<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
+			</scroll-view>
 			<scroll-view scroll-y="true" class="scoll-h">
 				<view class="content-box flexc0c">
 					<view class="content-top">
@@ -40,7 +41,8 @@
 						</view>
 						<!-- echarts表1 -->
 						<view class="chart1-box">
-							<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" force-use-old-canvas="true" ec="{{ ecLine }}"></ec-canvas>
+							<!-- <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" force-use-old-canvas="true" data-a="ecline{{index+1}}" ec="{{ "ecLine"+(index+1) }}"></ec-canvas> -->
+							<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" force-use-old-canvas="true" data-a="ecline{{index+1}}" ec="{{ecline[index]}}"></ec-canvas>
 						</view>
 					</view>
 					<view class="monthchart">
@@ -56,7 +58,7 @@
 							</view>
 						</view>
 						<view class="chart2-box">
-							<ec-canvas id="mychart-dom-line" force-use-old-canvas="true" canvas-id="mychart-line" ec="{{ ecbar }}"></ec-canvas>
+							<ec-canvas id="mychart-dom-line" force-use-old-canvas="true" canvas-id="mychart-line" ec="{{ ecbar[index] }}"></ec-canvas>
 						</view>
 					</view>
 					<view class="typeperchart">
@@ -67,7 +69,7 @@
 							</view>
 						</view>
 						<view class="chart3-box">
-							<ec-canvas id="mychart-dom-line" force-use-old-canvas="true" canvas-id="mychart-line" ec="{{ ecpie }}"></ec-canvas>
+							<ec-canvas id="mychart-dom-line" force-use-old-canvas="true" canvas-id="mychart-line" ec="{{ ecpie[index] }}"></ec-canvas>
 						</view>
 					</view>
 					<view class="rankcompany">
@@ -86,7 +88,7 @@
 								<view class="rank-title">{{item.ENTERPRISE_NAME}}</view>
 								<view class="flexr0c">
 									<view class="progress-bar">
-										<view class="progress" style="width:{{item.COUNT/35*560}}rpx"></view>
+										<view class="progress" style="width:{{item.COUNT/needcarshort[0].COUNT*560}}rpx;color:#F5A623;"></view>
 									</view>
 									<view class="progress-num">{{item.COUNT}}</view>
 								</view>
@@ -95,7 +97,7 @@
 								<view class="rank-title">{{item.ENTERPRISE_NAME}}</view>
 								<view class="flexr0c">
 									<view class="progress-bar">
-										<view class="progress" style="width:{{item.SUM_WEIGHT/35*560}}rpx"></view>
+										<view class="progress-dun" style="width:{{item.SUM_WEIGHT/needweightshort[0].SUM_WEIGHT*560}}rpx"></view>
 									</view>
 									<view class="progress-num">{{item.SUM_WEIGHT}}</view>
 								</view>
@@ -126,7 +128,7 @@
 								<view class="rank-title">{{item.DEST_AREA}}</view>
 								<view class="flexr0c">
 									<view class="progress-bar">
-										<view class="progress" style="width:{{item.COUNT/35*560}}rpx"></view>
+										<view class="progress" style="width:{{item.COUNT/descarshort[0].COUNT*560}}rpx"></view>
 									</view>
 									<view class="progress-num">{{item.COUNT}}</view>
 								</view>
@@ -135,7 +137,7 @@
 								<view class="rank-title">{{item.DEST_AREA}}</view>
 								<view class="flexr0c">
 									<view class="progress-bar">
-										<view class="progress" style="width:{{item.SUM_WEIGHT/35*560}}rpx"></view>
+										<view class="progress-dun" style="width:{{item.SUM_WEIGHT/desweightshort[0].SUM_WEIGHT*560}}rpx"></view>
 									</view>
 									<view class="progress-num">{{item.SUM_WEIGHT}}</view>
 								</view>
@@ -155,4 +157,26 @@
 		</swiper-item>
 	</swiper>
 
+	<van-tabbar active="{{ active }}" bind:change="onChange">
+		<van-tabbar-item>
+			<image slot="icon" src="{{ icon.index }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			<image slot="icon-active" src="{{ icon.indexactive }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			首页
+		</van-tabbar-item>
+		<van-tabbar-item>
+			<image slot="icon" src="{{ icon.res }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			<image slot="icon-active" src="{{ icon.resactive }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			预约车辆
+		</van-tabbar-item>
+		<van-tabbar-item>
+			<image slot="icon" src="{{ icon.leave }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			<image slot="icon-active" src="{{ icon.leaveactive }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			出厂车辆
+		</van-tabbar-item>
+		<van-tabbar-item>
+			<image slot="icon" src="{{ icon.mine }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			<image slot="icon-active" src="{{ icon.mineactive }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			我的
+		</van-tabbar-item>
+	</van-tabbar>
 </view>

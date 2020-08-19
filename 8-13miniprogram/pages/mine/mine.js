@@ -10,7 +10,48 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name:''
+    name: '',
+    //tabbar部分
+    active: 3,
+    icon: {
+      index: '../../assets/image/4index.png',
+      indexactive: '../../assets/image/4indexactive.png',
+      res: '../../assets/image/5yuyue.png',
+      resactive: '../../assets/image/5yuyueactive.png',
+      leave: '../../assets/image/6leave.png',
+      leaveactive: '../../assets/image/6leaveactive.png',
+      mine: '../../assets/image/7mine.png',
+      mineactive: '../../assets/image/7mineactive.png',
+    },
+  },
+  //tabbar
+  onChange(event) {
+    switch (event.detail) {
+      case 0:
+        wx.switchTab({
+          url: '../index/index',
+        })
+        break;
+      case 1:
+        wx.switchTab({
+          url: '../reservation/reservation',
+        })
+        break;
+      case 2:
+        wx.switchTab({
+          url: '../leavefactory/leavefactory',
+        })
+        break;
+      case 3:
+        wx.switchTab({
+          url: '../mine/mine',
+        })
+        break;
+
+      default:
+        break;
+    }
+    
   },
 
   modify: function () {
@@ -42,11 +83,21 @@ Page({
           title: res.data.msg,
           icon: 'none',
         })
+        that.isLoged(res.data.msg)
       }
     })
   },
 
-
+  // 是否登陆过，若在别的地方登陆，跳转登录页
+  isLoged: function (msg) {
+    if (msg.indexOf('你') != -1) {
+      let timeout1 = setTimeout(function () {
+        wx.navigateTo({
+          url: '../login/login',
+        })
+      }, 2000)
+    }
+  },
 
 
   /**
@@ -54,8 +105,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      username:wx.getStorageSync('userName'),
-      realname:wx.getStorageSync('realName'),
+      username: wx.getStorageSync('userName'),
+      realname: wx.getStorageSync('realName'),
     })
   },
 

@@ -1,7 +1,7 @@
 /* pages/index/index.wxss */
 .container {
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   position: relative;
 }
 
@@ -52,7 +52,7 @@
   width: 100%;
   height: 100rpx;
   position: fixed;
-  top: 128rpx;
+  top: 0rpx;
   box-sizing: border-box;
   overflow: hidden;
   line-height: 100rpx;
@@ -61,6 +61,7 @@
   font-size: 32rpx;
   white-space: nowrap;
   border: none;
+  z-index: 3;
 }
 
 .tab-item {
@@ -96,7 +97,7 @@
   height: 100%;
   background: #f9f9f9;
   position: absolute;
-  top: 100rpx;
+  top: 70rpx;
 }
 
 .swiper-item-box {
@@ -195,6 +196,10 @@
   font-weight: 600;
 }
 
+.nomore {
+  height: 60rpx;
+}
+
 .product-name,
 .car-name,
 .car-time {
@@ -218,7 +223,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2; 
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 

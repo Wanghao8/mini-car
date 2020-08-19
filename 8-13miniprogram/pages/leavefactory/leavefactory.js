@@ -7,13 +7,53 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //tabbar部分
+    active: 2,
+    icon: {
+      index: '../../assets/image/4index.png',
+      indexactive: '../../assets/image/4indexactive.png',
+      res: '../../assets/image/5yuyue.png',
+      resactive: '../../assets/image/5yuyueactive.png',
+      leave: '../../assets/image/6leave.png',
+      leaveactive: '../../assets/image/6leaveactive.png',
+      mine: '../../assets/image/7mine.png',
+      mineactive: '../../assets/image/7mineactive.png',
+    },
     // swiper部分
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    date: 1 //今日1，明日2，本周3，本月4
+    date: 1 //今日1，昨日2，本月3，上月4
   },
+//tabbar
+onChange(event) {
+  switch (event.detail) {
+    case 0:
+      wx.switchTab({
+        url: '../index/index',
+      })
+      break;
+    case 1:
+      wx.switchTab({
+        url: '../reservation/reservation',
+      })
+      break;
+    case 2:
+      wx.switchTab({
+        url: '../leavefactory/leavefactory',
+      })
+      break;
+    case 3:
+      wx.switchTab({
+        url: '../mine/mine',
+      })
+      break;
 
+    default:
+      break;
+  }
+  
+},
   //切换今日明日按钮
   choosedate: function (e) {
     switch (e.currentTarget.dataset.type) {
@@ -47,7 +87,16 @@ Page({
     }
   },
 
-
+  // 是否登陆过，若在别的地方登陆，跳转登录页
+  isLoged: function (msg) {
+    if (msg.indexOf('你') != -1) {
+      let timeout1 = setTimeout(function () {
+        wx.navigateTo({
+          url: '../login/login',
+        })
+      }, 2000)
+    }
+  },
 
   // 滚动切换标签样式
   switchTab: function (e) {
@@ -101,7 +150,7 @@ Page({
         var clientHeight = res.windowHeight,
           clientWidth = res.windowWidth,
           rpxR = 750 / clientWidth;
-        var calc = clientHeight * rpxR - 135;
+        var calc = clientHeight * rpxR - 160;
         console.log(calc)
         that.setData({
           winHeight: calc
@@ -208,6 +257,7 @@ Page({
           title: res.data.msg,
           icon: 'none',
         })
+        that.isLoged(res.data.msg)
       }
     })
   },

@@ -1,55 +1,78 @@
 <!--pages/index/index.wxml-->
 <view class="container">
-	<view class="top-blue">
-		<van-nav-bar title="出厂车辆">
-		</van-nav-bar>
-		<view>
-			<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-				<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
-			</scroll-view>
-		</view>
-		<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
-			<swiper-item wx:for="{{oreList}}" wx:key="index">
-				<scroll-view scroll-y="true" class="scoll-h">
-					<view class="swiper-item-box">
-						<view class="date-box flexr0c">
-							<view class="today {{date==1?'dateactive':''}}" bindtap="choosedate" data-type="today">今日</view>
-							<view class="tomorrow {{date==2?'dateactive':''}}" bindtap="choosedate" data-type="tomorrow">明日</view>
-							<view class="week {{date==3?'dateactive':''}}" bindtap="choosedate" data-type="week">本周</view>
-							<view class="month {{date==4?'dateactive':''}}" bindtap="choosedate" data-type="month">本月</view>
-						</view>
 
-						<!-- <view class="content-item-box" wx:for=""> -->
-
-						<view class="content-item-box" hidden="{{!count}}">
-							<view class="content-item" wx:for="{{list}}" wx:key="index">
-								<view class="company-name">{{item.ORE_NAME}}</view>
-								<view class="content-item-bottom flexrbc">
-									<view class="content-item-bottom-left flexc">
-										<view class="car-name">出厂车辆：<text class="subtext">{{item.PLATE_NUM}}</text></view>
-										<view class="product-name flexr">需方企业：<view class="subtext company">{{item.BUYER_NAME}}</view>
-										</view>
-										<view class="car-time">出厂时间：<text class="subtext">{{item.PASS_TIME}}</text></view>
-									</view>
-									<view class="content-item-bottom-right flexrbc" bindtap="toDettail" data-info="{{item}}">
-										<view class="content-item-right-left flexc0c">
-											<view class="content-item-right-left-title">净重(吨)</view>
-											<view class="content-item-right-left-num">{{item.NET_WEIGHT}}</view>
-										</view>
-										<image class="detailimg" src="../../assets/image/13detailarrow.png"></image>
-									</view>
-								</view>
-							</view>
-							<view class="tips" hidden="{{!count}}">没有更多了~</view>
-						</view>
-						<view class="null-box flexc0c" hidden="{{count}}">
-							<image class="null-img" src="../../assets/image/14noleave.png"></image>
-							<view class="tips">暂无出厂车辆</view>
-						</view>
+	<van-nav-bar title="出厂车辆">
+	</van-nav-bar>
+	<view>
+		
+	</view>
+	<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+		<swiper-item wx:for="{{oreList}}" wx:key="index">
+		<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+			<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
+		</scroll-view>
+			<scroll-view scroll-y="true" class="scoll-h">
+				<view class="swiper-item-box">
+					<view class="date-box flexr0c">
+						<view class="today {{date==1?'dateactive':''}}" bindtap="choosedate" data-type="today">今日</view>
+						<view class="tomorrow {{date==2?'dateactive':''}}" bindtap="choosedate" data-type="tomorrow">昨日</view>
+						<view class="week {{date==3?'dateactive':''}}" bindtap="choosedate" data-type="week">本月</view>
+						<view class="month {{date==4?'dateactive':''}}" bindtap="choosedate" data-type="month">上月</view>
 					</view>
 
-				</scroll-view>
-			</swiper-item>
-		</swiper>
-	</view>
+					<!-- <view class="content-item-box" wx:for=""> -->
+
+					<view class="content-item-box" hidden="{{!count}}">
+						<view class="content-item" wx:for="{{list}}" wx:key="index">
+							<view class="company-name">{{item.ORE_NAME}}</view>
+							<view class="content-item-bottom flexrbc">
+								<view class="content-item-bottom-left flexc">
+									<view class="car-name">出厂车辆：<text class="subtext">{{item.PLATE_NUM}}</text></view>
+									<view class="product-name flexr">需方企业：<view class="subtext company">{{item.BUYER_NAME}}</view>
+									</view>
+									<view class="car-time">出厂时间：<text class="subtext">{{item.PASS_TIME}}</text></view>
+								</view>
+								<view class="content-item-bottom-right flexrbc" bindtap="toDettail" data-info="{{item}}">
+									<view class="content-item-right-left flexc0c">
+										<view class="content-item-right-left-title">净重(吨)</view>
+										<view class="content-item-right-left-num">{{item.NET_WEIGHT}}</view>
+									</view>
+									<image class="detailimg" src="../../assets/image/13detailarrow.png"></image>
+								</view>
+							</view>
+						</view>
+						<view class="tips nomore" hidden="{{!count}}">没有更多了~</view>
+					</view>
+					<view class="null-box flexc0c" hidden="{{count}}">
+						<image class="null-img" src="../../assets/image/14noleave.png"></image>
+						<view class="tips">暂无出厂车辆</view>
+					</view>
+				</view>
+
+			</scroll-view>
+		</swiper-item>
+	</swiper>
+	<van-tabbar active="{{ active }}" bind:change="onChange">
+		<van-tabbar-item>
+			<image slot="icon" src="{{ icon.index }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			<image slot="icon-active" src="{{ icon.indexactive }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			首页
+		</van-tabbar-item>
+		<van-tabbar-item>
+			<image slot="icon" src="{{ icon.res }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			<image slot="icon-active" src="{{ icon.resactive }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			预约车辆
+		</van-tabbar-item>
+		<van-tabbar-item>
+			<image slot="icon" src="{{ icon.leave }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			<image slot="icon-active" src="{{ icon.leaveactive }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			出厂车辆
+		</van-tabbar-item>
+		<van-tabbar-item>
+			<image slot="icon" src="{{ icon.mine }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			<image slot="icon-active" src="{{ icon.mineactive }}" mode="aspectFit" style="width: 20px; height: 20px;" />
+			我的
+		</van-tabbar-item>
+
+	</van-tabbar>
 </view>

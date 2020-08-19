@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "van-nav-bar": "@vant/weapp/nav-bar/index",
-    "ec-canvas": "../../components/ec-canvas/ec-canvas"
+    "ec-canvas": "../../ec-canvas/ec-canvas",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index"
   }
 }

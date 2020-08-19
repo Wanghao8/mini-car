@@ -1,6 +1,6 @@
 {
   "pages": [
-    
+
 
     "pages/index/index",
     "pages/login/login",
@@ -18,17 +18,17 @@
     "navigationStyle": "custom"
   },
   "tabBar": {
+    "custom": true,
     "selectedColor": "#3163E8",
-    "color":"#D8D8D8",
-    "list": [
-      {
+    "color": "#D8D8D8",
+    "list": [{
         "pagePath": "pages/index/index",
         "iconPath": "./assets/image/4index.png",
         "selectedIconPath": "./assets/image/4indexactive.png",
         "selectedColor": "#3163E8",
         "text": "首页"
       },
-      
+
       {
         "pagePath": "pages/reservation/reservation",
         "iconPath": "./assets/image/5yuyue.png",
