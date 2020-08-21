@@ -118,7 +118,7 @@ Page({
     let that = this
     const data = {
       sessionId: wx.getStorageSync('sessionId'),
-      modeCode: "ksgQKgWBsrXYEK3qBalNaX5Pe1ZB8VMD",
+      modeCode: "MNiKI0fbqzdtMmeQCYfUJiZ5wgsjxm04",
       oldPassWord: that.data.password,
       newPassWord: that.data.Confirmword,
     }

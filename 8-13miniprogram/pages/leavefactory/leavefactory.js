@@ -19,41 +19,42 @@ Page({
       mine: '../../assets/image/7mine.png',
       mineactive: '../../assets/image/7mineactive.png',
     },
+    fromdetail: false,
     // swiper部分
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     date: 1 //今日1，昨日2，本月3，上月4
   },
-//tabbar
-onChange(event) {
-  switch (event.detail) {
-    case 0:
-      wx.switchTab({
-        url: '../index/index',
-      })
-      break;
-    case 1:
-      wx.switchTab({
-        url: '../reservation/reservation',
-      })
-      break;
-    case 2:
-      wx.switchTab({
-        url: '../leavefactory/leavefactory',
-      })
-      break;
-    case 3:
-      wx.switchTab({
-        url: '../mine/mine',
-      })
-      break;
+  //tabbar
+  onChange(event) {
+    switch (event.detail) {
+      case 0:
+        wx.switchTab({
+          url: '../index/index',
+        })
+        break;
+      case 1:
+        wx.switchTab({
+          url: '../reservation/reservation',
+        })
+        break;
+      case 2:
+        wx.switchTab({
+          url: '../leavefactory/leavefactory',
+        })
+        break;
+      case 3:
+        wx.switchTab({
+          url: '../mine/mine',
+        })
+        break;
 
-    default:
-      break;
-  }
-  
-},
+      default:
+        break;
+    }
+
+  },
   //切换今日明日按钮
   choosedate: function (e) {
     switch (e.currentTarget.dataset.type) {
@@ -101,16 +102,22 @@ onChange(event) {
   // 滚动切换标签样式
   switchTab: function (e) {
     this.setData({
+      date: 1
+    })
+    this.setData({
       currentTab: e.detail.current
     });
     this.setData({
       oreId: this.data.oreList[this.data.currentTab].oreId
     })
-    this.checkCor();
     this.getleaveInfo(this.data.date)
+    this.checkCor();
   },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
+    this.setData({
+      date: 1
+    })
     var cur = e.target.dataset.current;
     if (this.data.currentTaB == cur) {
       return false;
@@ -145,16 +152,29 @@ onChange(event) {
   onLoad: function (options) {
     var that = this;
     //  高度自适应
+    let option = options
     wx.getSystemInfo({
       success: function (res) {
         var clientHeight = res.windowHeight,
           clientWidth = res.windowWidth,
+          height1 = res.statusBarHeight,
           rpxR = 750 / clientWidth;
-        var calc = clientHeight * rpxR - 160;
+        console.log(height1);
+
+        var calc = clientHeight * rpxR - (80 + height1) * 2;
         console.log(calc)
         that.setData({
           winHeight: calc
         });
+        if (res.model.indexOf('iPhone') != -1) {
+          that.setData({
+            brand: 'iphone'
+          })
+        } else {
+          that.setData({
+            brand: 'an'
+          })
+        }
       }
     });
   },
@@ -163,13 +183,31 @@ onChange(event) {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    let that = this
+    wx.getSystemInfo({
+      success(res) {
+        that.setData({
+          topgap: res.statusBarHeight
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.hideNavigationBarLoading();
+    const pages = getCurrentPages()
+    const currPage = pages[pages.length - 1] // 当前页
+    if (!currPage.data.fromdetail) {
+      this.setData({
+        active: 2, //tabbar位置
+        currentTab: 0, //预设当前项的值
+        scrollLeft: 0, //tab标题的滚动条位置
+        date: 1 //今日1，昨日2，本月3，上月4
+      })
+    }
     if (wx.getStorageSync('userOreList')) {
       let oreList = wx.getStorageSync('userOreList')
       let oreIds = []
@@ -198,7 +236,9 @@ onChange(event) {
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.setData({
+      fromdetail: false
+    })
   },
 
   /**
@@ -232,12 +272,15 @@ onChange(event) {
 
   //接口部分
   getleaveInfo: function (type) {
+    wx.showLoading({
+      title: '加载中',
+    })
     let that = this
     const data = {
       modeCode: 'VJLUz1JW9I7crGvw4LWYqqUeMMxKq9mo', //功能码
       sessionId: wx.getStorageSync('sessionId'),
       pageIndex: 1,
-      pageSize: 20,
+      pageSize: 50,
       oreId: that.data.oreId,
       timeType: type
     }
@@ -248,11 +291,20 @@ onChange(event) {
       if (res.data.code == 1) {
         let resdata = res.data.data
         let list = resdata.list
+        let all = 0
+        for (let i in resdata.oreCountMap) {
+          console.log(resdata.oreCountMap[i]);
+          all += resdata.oreCountMap[i]
+        }
         that.setData({
           list: list,
-          count: resdata.count
+          count: resdata.count,
+          countList: resdata.oreCountMap,
+          countall: all
         })
+        wx.hideLoading({})
       } else {
+        wx.hideLoading({})
         wx.showToast({
           title: res.data.msg,
           icon: 'none',

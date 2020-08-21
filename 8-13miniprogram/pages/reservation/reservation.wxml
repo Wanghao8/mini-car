@@ -3,15 +3,12 @@
 
 	<van-nav-bar title="预约车辆">
 	</van-nav-bar>
-	<view>
-
-	</view>
+	<scroll-view scroll-x="true" class="tab-h" style="top:'{{44+topgap}}rpx'" scroll-left="{{scrollLeft}}">
+		<view class="tab-item {{currentTab==index?'active':''}}" data-id="{{item.oreId}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}({{countList[item.oreId]}})</view>
+	</scroll-view>
 	<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
 		<swiper-item wx:for="{{oreList}}" wx:key="index">
 			<scroll-view scroll-y="true" class="scoll-h">
-				<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-					<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
-				</scroll-view>
 				<view class="swiper-item-box">
 					<view class="date-box flexr0c">
 						<view class="today {{date==1?'dateactive':''}}" bindtap="choosedate" data-type="today">今日</view>
@@ -52,7 +49,7 @@
 								</view>
 							</view>
 						</view>
-						<view class="tips nomore" hidden="{{!list.length}}">没有更多了~</view>
+						<view class="tips {{brand=='iphone'?'nomorex':'nomorean'}}" hidden="{{!list.length}}">没有更多了~</view>
 					</view>
 					<view class="null-box flexc0c" hidden="{{list.length}}">
 						<image class="null-img" src="../../assets/image/12noyuyue.png"></image>

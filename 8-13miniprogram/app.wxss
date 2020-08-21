@@ -1,4 +1,7 @@
 /**app.wxss**/
+page{
+  overflow-y: hidden;
+}
 
 /* flex布局 */
 .flexr {display: flex;flex-direction: row;}

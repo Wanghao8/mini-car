@@ -3,14 +3,11 @@
 
 	<van-nav-bar title="出厂车辆">
 	</van-nav-bar>
-	<view>
-		
-	</view>
+	<scroll-view scroll-x="true" style="top:'{{44+topgap}}rpx'" class="tab-h" scroll-left="{{scrollLeft}}">
+		<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}({{item.oreId?countList[item.oreId]:countall}})</view>
+	</scroll-view>
 	<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
 		<swiper-item wx:for="{{oreList}}" wx:key="index">
-		<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-			<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
-		</scroll-view>
 			<scroll-view scroll-y="true" class="scoll-h">
 				<view class="swiper-item-box">
 					<view class="date-box flexr0c">
@@ -23,7 +20,7 @@
 					<!-- <view class="content-item-box" wx:for=""> -->
 
 					<view class="content-item-box" hidden="{{!count}}">
-						<view class="content-item" wx:for="{{list}}" wx:key="index">
+						<view class="content-item" wx:for="{{list}}" wx:key="index" bindtap="toDettail" data-info="{{item}}">
 							<view class="company-name">{{item.ORE_NAME}}</view>
 							<view class="content-item-bottom flexrbc">
 								<view class="content-item-bottom-left flexc">
@@ -32,7 +29,7 @@
 									</view>
 									<view class="car-time">出厂时间：<text class="subtext">{{item.PASS_TIME}}</text></view>
 								</view>
-								<view class="content-item-bottom-right flexrbc" bindtap="toDettail" data-info="{{item}}">
+								<view class="content-item-bottom-right flexrbc">
 									<view class="content-item-right-left flexc0c">
 										<view class="content-item-right-left-title">净重(吨)</view>
 										<view class="content-item-right-left-num">{{item.NET_WEIGHT}}</view>
@@ -41,7 +38,7 @@
 								</view>
 							</view>
 						</view>
-						<view class="tips nomore" hidden="{{!count}}">没有更多了~</view>
+						<view class="tips {{brand=='iphone'?'nomorex':'nomorean'}}" hidden="{{!count}}">没有更多了~</view>
 					</view>
 					<view class="null-box flexc0c" hidden="{{count}}">
 						<image class="null-img" src="../../assets/image/14noleave.png"></image>

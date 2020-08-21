@@ -42,13 +42,14 @@
 .img-box {
   width: 702rpx;
   height: 320rpx;
-  /* margin: 16rpx 24rpx; */
-  margin: 144rpx 24rpx;
+  /* margin: 180rpx 24rpx; */
+  margin-left: 24rpx;
   margin-bottom: 0;
   background-color: #fff;
   box-shadow: 0 0 10px 0 rgba(49, 101, 236, 0.04);
   border-radius: 8rpx;
 }
+
 
 .img {
   width: 682rpx;
@@ -82,7 +83,7 @@
 
 .countnum-box {
   background-color: #fff;
-  height: 170rpx;
+  height: 180rpx;
 }
 
 .countnum-left,
@@ -133,7 +134,26 @@
   font-size: 16px;
   color: #626B80;
   letter-spacing: 0;
-  line-height: 60rpx;
+  line-height: 56rpx;
+}
+.car-name1 {
+  font-family: PingFangSC-Regular;
+  font-size: 16px;
+  color: #626B80;
+  letter-spacing: 0;
+  line-height: 56rpx;
+  text-indent: 5em;
+  margin-left: 5em;
+}
+.needcom {
+  flex-grow: 1;
+}
+.needcom1 {
+  width: 200rpx;
+  white-space: nowrap;
+}
+.needcomx {
+  width: 170rpx;
 }
 
 .subtext {
@@ -143,26 +163,37 @@
   letter-spacing: 0;
   font-weight: 600;
 }
-.content-bottom{
+
+.content-bottom {
   border-top: 2rpx dashed #E0E0E0;
   padding: 10rpx 0;
 }
-.staytime{
+
+.staytime {
   font-family: PingFangSC-Regular;
   font-size: 16px;
   color: #626B80;
   letter-spacing: 0;
   line-height: 60rpx;
 }
-.staytimesubtext{
+
+.staytimesubtext {
   font-family: PingFangSC-Semibold;
   font-size: 16px;
   color: #D0021B;
   letter-spacing: 0;
   font-weight: 600;
 }
-.phoneimg{
+
+.phoneimg {
   width: 32rpx;
   height: 32rpx;
   margin-left: 32rpx;
+}
+
+button {
+  font-family: PingFangSC-Regular;
+  font-size: 16px!important;
+  color: #4A4A4A;
+  letter-spacing: 0;
 }

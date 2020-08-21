@@ -1,9 +1,11 @@
 <view class="container">
-	<view class="navigation">
-		<van-nav-bar title="详情" left-arrow bind:click-left="onClickLeft">
-		</van-nav-bar>
+	<view class="navigation-box">
+		<view class="navigation">
+			<van-nav-bar title="详情" left-arrow bind:click-left="onClickLeft">
+			</van-nav-bar>
+		</view>
 	</view>
-	<view class="img-box">
+	<view class="img-box" style="margin-top:{{hairheight}}rpx">
 		<!-- <image class="img" src="../../../assets/image/16carimg.png"></image> -->
 		<image class="img" src="{{url}}"></image>
 	</view>
@@ -26,7 +28,12 @@
 				<view class="car-name">矿种：<text class="subtext">{{info.ORE_NAME}}</text></view>
 			</view>
 			<view class="content-middle">
-				<view class="product-name">需方企业：<text class="subtext">{{info.BUYER_NAME}}</text></view>
+				<view class="product-name flexrb">
+					<view class="{{iphoneX?needcomx:needcom1}}needcom1">需方企业：</view>
+					<view class="subtext needcom">{{info.BUYER_NAME}}</view>
+				</view>
+
+				<!-- <view class="car-name1">需方企业：<text class="subtext">{{info.BUYER_NAME}}</text></view> -->
 				<view class="car-name">目的地：<text class="subtext">{{info.DEST_AREA}}</text></view>
 			</view>
 			<view class="content-bottom">
@@ -38,7 +45,7 @@
 				<view class="car-name">车牌号码：<text class="subtext">{{info.PLATE_NUM}}</text></view>
 				<view class="flexr0c">
 					<view class="car-name">司机姓名：<text class="subtext">{{info.DRIVER_NAME}}</text></view>
-					<image bindtap="showphoneEvent" class="phoneimg" src="../../../assets/image/17phone.png"></image>
+					<image hidden="{{!info.DRIVER_NAME}}" bindtap="showphoneEvent" class="phoneimg" src="../../../assets/image/17phone.png"></image>
 				</view>
 			</view>
 			<view class="content-bottom">

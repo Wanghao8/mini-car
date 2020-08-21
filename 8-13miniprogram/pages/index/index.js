@@ -5,12 +5,18 @@ var app = getApp();
 let chartLine1;
 let chartLine2;
 let chartLine3;
+let chartLine4;
+let chartLine5;
 let chartBar1;
 let chartBar2;
 let chartBar3;
+let chartBar4;
+let chartBar5;
 let chartPie1;
 let chartPie2;
 let chartPie3;
+let chartPie4;
+let chartPie5;
 let lineoption = {
   grid: {
     top: '10%',
@@ -21,10 +27,11 @@ let lineoption = {
   xAxis: {
     type: 'category',
     boundaryGap: false,
-    inverse: true,
+    // inverse: true,
     axisLabel: {
-      show: true
+      show: true,
     },
+    splitNumber: 6,
     // data: ['14', '08'],
     data: [],
     axisLine: {
@@ -54,6 +61,11 @@ let lineoption = {
     type: 'line',
     smooth: true,
     showSymbol: false,
+    // showSymbol: true,
+    label: {
+      show: true,
+      position: 'top'
+    },
     lineStyle: {
       normal: {
         color: 'rgba(49,99,232,1)',
@@ -88,10 +100,10 @@ let lineoption = {
 }
 let baroption = {
   grid: {
-    top: '10%',
-    bottom: '15%',
+    top: '12%',
+    bottom: '12%',
     right: '5%',
-    left: '15%'
+    left: '10%'
   },
   yAxis: [{
     axisLine: {
@@ -106,7 +118,7 @@ let baroption = {
   }],
   xAxis: {
     type: 'category',
-    inverse: true,
+    // inverse: true,
     axisLine: {
       show: false
     },
@@ -124,7 +136,8 @@ let baroption = {
     type: 'bar',
     // zlevel: 1,
     label: {
-      show: false
+      show: true,
+      position: 'top'
     },
     barWidth: 10,
     itemStyle: {
@@ -136,24 +149,38 @@ let baroption = {
   }
 }
 let pieoption = {
+  tooltip: {
+    show: false,
+    trigger: 'none',
+  },
   color: ["#3163E8", "rgba(49,99,232,0.60)", "rgba(49,99,232,0.40)", "rgba(49,99,232,0.20)"],
   series: {
+    // label: {
+    //   normal: {
+    //     fontSize: 12
+    //   }
+    // },
+    startAngle: 120,
+    grid: {
+      top: '10%',
+      bottom: '0',
+      left: '',
+      right: '',
+      height: '90%'
+    },
     label: {
-      normal: {
-        fontSize: 12
-      }
+      formatter: '{b} {d}%',
+      show: true,
+      position: 'top',
+      fontStyle: 'normal',
+      fontSize: 8
     },
     type: 'pie',
-    center: ['50%', '50%'],
-    radius: [50, 70],
+    center: ['50%', '52%'],
+    radius: [45, 60],
     data: []
-    // data: [{
-    //   name: '石灰石',
-    //   value: 1
-    // }]
   }
 }
-
 
 
 Page({
@@ -180,120 +207,230 @@ Page({
     scrollLeft: 0, //tab标题的滚动条位置
     //echarts部分
     ecline: [{
-      onInit: function (canvas, width, height, dpr) {
-        chartLine1 = echarts.init(canvas, null, {
-          width: width,
-          height: height,
-          devicePixelRatio: dpr // new
-        });
-        canvas.setChart(chartLine1);
+        onInit: function (canvas, width, height, dpr) {
+          chartLine1 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartLine1);
 
-        chartLine1.setOption(lineoption, true)
-        return chartLine1;
-      }
-    }, {
-      onInit: function (canvas, width, height, dpr) {
-        chartLine2 = echarts.init(canvas, null, {
-          width: width,
-          height: height,
-          devicePixelRatio: dpr // new
-        });
-        canvas.setChart(chartLine2);
+          chartLine1.setOption(lineoption, true)
+          return chartLine1;
+        }
+      }, {
+        onInit: function (canvas, width, height, dpr) {
+          chartLine2 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartLine2);
 
-        chartLine2.setOption(lineoption, true)
-        return chartLine2;
-      }
-    }, {
-      onInit: function (canvas, width, height, dpr) {
-        chartLine3 = echarts.init(canvas, null, {
-          width: width,
-          height: height,
-          devicePixelRatio: dpr // new
-        });
-        canvas.setChart(chartLine3);
+          chartLine2.setOption(lineoption, true)
+          return chartLine2;
+        }
+      },
+      {
+        onInit: function (canvas, width, height, dpr) {
+          chartLine3 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartLine3);
 
-        chartLine3.setOption(lineoption, true)
-        return chartLine3;
-      }
-    }],
+          chartLine3.setOption(lineoption, true)
+          return chartLine3;
+        }
+      },
+      {
+        onInit: function (canvas, width, height, dpr) {
+          chartLine4 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartLine4);
+
+          chartLine4.setOption(lineoption, true)
+          return chartLine4;
+        }
+      },
+      {
+        onInit: function (canvas, width, height, dpr) {
+          chartLine5 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartLine5);
+
+          chartLine5.setOption(lineoption, true)
+          return chartLine5;
+        }
+      },
+      {
+        onInit: function (canvas, width, height, dpr) {
+          chartLine6 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartLine6);
+
+          chartLine6.setOption(lineoption, true)
+          return chartLine6;
+        }
+      },
+      {
+        onInit: function (canvas, width, height, dpr) {
+          chartLine7 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartLine7);
+
+          chartLine7.setOption(lineoption, true)
+          return chartLine7;
+        }
+      },
+    ],
     ecbar: [{
-      onInit: function (canvas, width, height, dpr) {
-        chartBar1 = echarts.init(canvas, null, {
-          width: width,
-          height: height,
-          devicePixelRatio: dpr // new
-        });
-        canvas.setChart(chartBar1);
+        onInit: function (canvas, width, height, dpr) {
+          chartBar1 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartBar1);
 
-        chartBar1.setOption(baroption, true)
-        return chartBar1;
-      }
-    }, {
-      onInit: function (canvas, width, height, dpr) {
-        chartBar2 = echarts.init(canvas, null, {
-          width: width,
-          height: height,
-          devicePixelRatio: dpr // new
-        });
-        canvas.setChart(chartBar2);
+          chartBar1.setOption(baroption, true)
+          return chartBar1;
+        }
+      }, {
+        onInit: function (canvas, width, height, dpr) {
+          chartBar2 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartBar2);
 
-        chartBar2.setOption(baroption, true)
-        return chartBar2;
-      }
-    }, {
-      onInit: function (canvas, width, height, dpr) {
-        chartBar3 = echarts.init(canvas, null, {
-          width: width,
-          height: height,
-          devicePixelRatio: dpr // new
-        });
-        canvas.setChart(chartBar3);
+          chartBar2.setOption(baroption, true)
+          return chartBar2;
+        }
+      },
+      {
+        onInit: function (canvas, width, height, dpr) {
+          chartBar3 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartBar3);
 
-        chartBar3.setOption(baroption, true)
-        return chartBar3;
-      }
-    }, ],
+          chartBar3.setOption(baroption, true)
+          return chartBar3;
+        }
+      },
+      {
+        onInit: function (canvas, width, height, dpr) {
+          chartBar4 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartBar4);
+
+          chartBar4.setOption(baroption, true)
+          return chartBar4;
+        }
+      },
+      {
+        onInit: function (canvas, width, height, dpr) {
+          chartBar5 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartBar5);
+
+          chartBar5.setOption(baroption, true)
+          return chartBar5;
+        }
+      },
+    ],
     ecpie: [{
-      onInit: function (canvas, width, height, dpr) {
-        chartPie1 = echarts.init(canvas, null, {
-          width: width,
-          height: height,
-          devicePixelRatio: dpr // new
-        });
-        canvas.setChart(chartPie1);
+        onInit: function (canvas, width, height, dpr) {
+          chartPie1 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartPie1);
 
-        chartPie1.setOption(pieoption, true)
-        return chartPie1;
-      }
-    }, {
-      onInit: function (canvas, width, height, dpr) {
-        chartPie2 = echarts.init(canvas, null, {
-          width: width,
-          height: height,
-          devicePixelRatio: dpr // new
-        });
-        canvas.setChart(chartPie2);
+          chartPie1.setOption(pieoption, true)
+          return chartPie1;
+        }
+      }, {
+        onInit: function (canvas, width, height, dpr) {
+          chartPie2 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartPie2);
 
-        chartPie2.setOption(pieoption, true)
-        return chartPie2;
-      }
-    }, {
-      onInit: function (canvas, width, height, dpr) {
-        chartPie3 = echarts.init(canvas, null, {
-          width: width,
-          height: height,
-          devicePixelRatio: dpr // new
-        });
-        canvas.setChart(chartPie3);
+          chartPie2.setOption(pieoption, true)
+          return chartPie2;
+        }
+      },
+      {
+        onInit: function (canvas, width, height, dpr) {
+          chartPie3 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartPie3);
 
-        chartPie3.setOption(pieoption, true)
-        return chartPie3;
-      }
-    }, ],
+          chartPie3.setOption(pieoption, true)
+          return chartPie3;
+        }
+      },
+      {
+        onInit: function (canvas, width, height, dpr) {
+          chartPie4 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartPie4);
+
+          chartPie4.setOption(pieoption, true)
+          return chartPie4;
+        }
+      },
+      {
+        onInit: function (canvas, width, height, dpr) {
+          chartPie5 = echarts.init(canvas, null, {
+            width: width,
+            height: height,
+            devicePixelRatio: dpr // new
+          });
+          canvas.setChart(chartPie5);
+
+          chartPie5.setOption(pieoption, true)
+          return chartPie5;
+        }
+      },
+    ],
 
     // 页面部分
     once: 1, //首次初始化图表
-    month: '八月',
+    month: '一月',
     monthIndex: (new Date().getMonth()),
     monthList: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月', ],
     todaybtn: 0, //切换车次吨数（今日）
@@ -330,7 +467,7 @@ Page({
       default:
         break;
     }
-    
+
   },
   // picker选择月份
   chooseMonth(e) {
@@ -341,11 +478,16 @@ Page({
   },
   // echart切车次重量按钮
   toggleActive: function (e) {
+    wx.showLoading({
+      title: '加载中',
+    })
     switch (e.currentTarget.dataset.type) {
       case 'todaycar':
         this.setData({
           todaybtn: 0
         })
+
+
         lineoption.series.lineStyle.normal.color = 'rgba(49,99,232,1)'
         lineoption.series.data = this.data.daycar
         if (this.data.currentTab == 0) {
@@ -354,13 +496,22 @@ Page({
           chartLine2.setOption(lineoption, true)
         } else if (this.data.currentTab == 2) {
           chartLine3.setOption(lineoption, true)
+        } else if (this.data.currentTab == 3) {
+          chartLine4.setOption(lineoption, true)
+        } else if (this.data.currentTab == 4) {
+          chartLine5.setOption(lineoption, true)
+        } else if (this.data.currentTab == 5) {
+          chartLine6.setOption(lineoption, true)
+        } else if (this.data.currentTab == 6) {
+          chartLine7.setOption(lineoption, true)
         }
-
+        wx.hideLoading({})
         break;
       case 'todayweight':
         this.setData({
           todaybtn: 1
         })
+
         lineoption.series.lineStyle.normal.color = "#F5A623"
         lineoption.series.data = this.data.dayweight
         if (this.data.currentTab == 0) {
@@ -369,8 +520,16 @@ Page({
           chartLine2.setOption(lineoption, true)
         } else if (this.data.currentTab == 2) {
           chartLine3.setOption(lineoption, true)
+        } else if (this.data.currentTab == 3) {
+          chartLine4.setOption(lineoption, true)
+        } else if (this.data.currentTab == 4) {
+          chartLine5.setOption(lineoption, true)
+        } else if (this.data.currentTab == 5) {
+          chartLine6.setOption(lineoption, true)
+        } else if (this.data.currentTab == 6) {
+          chartLine7.setOption(lineoption, true)
         }
-
+        wx.hideLoading({})
         break;
       case 'monthcar':
         this.setData({
@@ -384,8 +543,16 @@ Page({
           chartBar2.setOption(baroption, true)
         } else if (this.data.currentTab == 2) {
           chartBar3.setOption(baroption, true)
+        } else if (this.data.currentTab == 3) {
+          chartBar4.setOption(baroption, true)
+        } else if (this.data.currentTab == 4) {
+          chartBar5.setOption(baroption, true)
+        } else if (this.data.currentTab == 5) {
+          chartBar5.setOption(baroption, true)
+        } else if (this.data.currentTab == 6) {
+          chartBar5.setOption(baroption, true)
         }
-
+        wx.hideLoading({})
         break;
       case 'monthweight':
         this.setData({
@@ -399,30 +566,43 @@ Page({
           chartBar2.setOption(baroption, true)
         } else if (this.data.currentTab == 2) {
           chartBar3.setOption(baroption, true)
+        } else if (this.data.currentTab == 3) {
+          chartBar4.setOption(baroption, true)
+        } else if (this.data.currentTab == 4) {
+          chartBar5.setOption(baroption, true)
+        } else if (this.data.currentTab == 5) {
+          chartBar5.setOption(baroption, true)
+        } else if (this.data.currentTab == 6) {
+          chartBar5.setOption(baroption, true)
         }
-
+        wx.hideLoading({})
         break;
       case 'needcar':
         this.setData({
           needbtn: 0
         })
+        wx.hideLoading({})
         break;
       case 'needweight':
         this.setData({
           needbtn: 1
         })
+        wx.hideLoading({})
         break;
       case 'destinationcar':
         this.setData({
           destinationbtn: 0
         })
+        wx.hideLoading({})
         break;
       case 'destinationweight':
         this.setData({
           destinationbtn: 1
         })
+        wx.hideLoading({})
         break;
       default:
+        wx.hideLoading({})
         break;
     }
   },
@@ -486,7 +666,7 @@ Page({
       this.setData({
         oreId: this.data.oreList[this.data.currentTab].oreId
       })
-      this.getOreInfo(this.data.currentTab)
+      // this.getOreInfo(this.data.currentTab)
     }
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
@@ -511,8 +691,9 @@ Page({
       success: function (res) {
         var clientHeight = res.windowHeight,
           clientWidth = res.windowWidth,
+          height1 = res.statusBarHeight,
           rpxR = 750 / clientWidth;
-        var calc = clientHeight * rpxR - 160;
+        var calc = clientHeight * rpxR - (80 + height1) * 2;
         // var calc = clientHeight * rpxR - 200;
         console.log(calc)
         that.setData({
@@ -520,20 +701,65 @@ Page({
         });
       }
     });
+    wx.getSystemInfo({
+      success(res) {
+        console.log(res.model)
+        if (res.model.indexOf('iPhone XR') != -1) {
+          that.setData({
+            brand: 'iphonex'
+          })
+        } else if (res.model.indexOf('iPhone') != -1) {
+          that.setData({
+            brand: 'iphone'
+          })
+        } else {
+          that.setData({
+            brand: 'an'
+          })
+        }
+      }
+    })
   },
   footerTap: app.footerTap,
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    let that = this
+    wx.getSystemInfo({
+      success(res) {
+        that.setData({
+          topgap: res.statusBarHeight
+        })
+      }
+    })
+    this.setData({
+      month: this.data.monthList[this.data.monthIndex],
+      year: new Date().getFullYear()
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.hideNavigationBarLoading();
+
     app.is_login()
+    //刷新页面操作
+    this.setData({
+      once: 1,
+      active: 0,
+      currentTab: 0,
+      scrollLeft: 0,
+      monthIndex: (new Date().getMonth()),
+      todaybtn: 0, //切换车次吨数（今日）
+      monthbtn: 0, //切换车次吨数（本月）
+      needbtn: 0, //切换车次吨数（需方）
+      destinationbtn: 0, //切换车次吨数（目的地）
+      needfold: true, //需方列表展开收起
+      destinationfold: true, //目的地列表展开收起
+    })
     if (wx.getStorageSync('userOreList')) {
       let oreList = wx.getStorageSync('userOreList')
       oreList.unshift({
@@ -548,12 +774,10 @@ Page({
           oreId: this.data.oreList[this.data.currentTab].oreId
         })
         this.getOreInfo(this.data.currentTab)
+        wx.hideLoading({})
       }, 100);
     }
-    this.setData({
-      month: this.data.monthList[this.data.monthIndex],
-      year: new Date().getFullYear()
-    })
+
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -589,64 +813,100 @@ Page({
   onShareAppMessage: function () {
 
   },
-  //初始化chart
-  initChart1: function () {
+ 
+  setchartdata: function () {
     if (this.data.todaybtn == 0) {
+      lineoption.series.lineStyle.normal.color = 'rgba(49,99,232,1)'
       lineoption.series.data = this.data.daycar
-    } else if (this.data.todaybtn == 0) {
+    } else if (this.data.todaybtn == 1) {
+      lineoption.series.lineStyle.normal.color = '#F5A623'
       lineoption.series.data = this.data.dayweight
     }
     if (this.data.monthbtn == 0) {
+      baroption.series.itemStyle.color = 'rgba(49,99,232,1)'
       baroption.series.data = this.data.monthcar
     } else if (this.data.monthbtn == 1) {
+      baroption.series.itemStyle.color = '#F5A623'
       baroption.series.data = this.data.monthweight
     }
+  },
+  //初始化chart
+  initChart1: function () {
+    this.setchartdata()
     lineoption.xAxis.data = this.data.dayx
     baroption.xAxis.data = this.data.monthx
     pieoption.series.data = this.data.pieoption
     chartLine1.setOption(lineoption, true)
     chartBar1.setOption(baroption, true)
     chartPie1.setOption(pieoption, true)
+    wx.hideLoading({})
   },
 
   initChart2: function () {
-    if (this.data.todaybtn == 0) {
-      lineoption.series.data = this.data.daycar
-    } else if (this.data.todaybtn == 0) {
-      lineoption.series.data = this.data.dayweight
-    }
-    if (this.data.monthbtn == 0) {
-      baroption.series.data = this.data.monthcar
-    } else if (this.data.monthbtn == 1) {
-      baroption.series.data = this.data.monthweight
-    }
+    this.setchartdata()
     lineoption.xAxis.data = this.data.dayx
     baroption.xAxis.data = this.data.monthx
     pieoption.series.data = this.data.pieoption
     chartLine2.setOption(lineoption, true)
     chartBar2.setOption(baroption, true)
     chartPie2.setOption(pieoption, true)
+    wx.hideLoading({})
   },
   initChart3: function () {
-    if (this.data.todaybtn == 0) {
-      lineoption.series.data = this.data.daycar
-    } else if (this.data.todaybtn == 0) {
-      lineoption.series.data = this.data.dayweight
-    }
-    if (this.data.monthbtn == 0) {
-      baroption.series.data = this.data.monthcar
-    } else if (this.data.monthbtn == 1) {
-      baroption.series.data = this.data.monthweight
-    }
+    this.setchartdata()
     lineoption.xAxis.data = this.data.dayx
     baroption.xAxis.data = this.data.monthx
     pieoption.series.data = this.data.pieoption
     chartLine3.setOption(lineoption, true)
     chartBar3.setOption(baroption, true)
     chartPie3.setOption(pieoption, true)
+    wx.hideLoading({})
+  },
+  initChart4: function () {
+    this.setchartdata()
+    lineoption.xAxis.data = this.data.dayx
+    baroption.xAxis.data = this.data.monthx
+    pieoption.series.data = this.data.pieoption
+    chartLine4.setOption(lineoption, true)
+    chartBar4.setOption(baroption, true)
+    chartPie4.setOption(pieoption, true)
+    wx.hideLoading({})
+  },
+  initChart5: function () {
+    this.setchartdata()
+    lineoption.xAxis.data = this.data.dayx
+    baroption.xAxis.data = this.data.monthx
+    pieoption.series.data = this.data.pieoption
+    chartLine5.setOption(lineoption, true)
+    chartBar5.setOption(baroption, true)
+    chartPie5.setOption(pieoption, true)
+    wx.hideLoading({})
+  },
+  initChart6: function () {
+    this.setchartdata()
+    lineoption.xAxis.data = this.data.dayx
+    baroption.xAxis.data = this.data.monthx
+    pieoption.series.data = this.data.pieoption
+    chartLine6.setOption(lineoption, true)
+    chartBar6.setOption(baroption, true)
+    chartPie6.setOption(pieoption, true)
+    wx.hideLoading({})
+  },
+  initChart7: function () {
+    this.setchartdata()
+    lineoption.xAxis.data = this.data.dayx
+    baroption.xAxis.data = this.data.monthx
+    pieoption.series.data = this.data.pieoption
+    chartLine7.setOption(lineoption, true)
+    chartBar7.setOption(baroption, true)
+    chartPie7.setOption(pieoption, true)
+    wx.hideLoading({})
   },
   //接口部分
   getOreInfo: function (type) {
+    wx.showLoading({
+      title: '加载中',
+    })
     let that = this
     const data = {
       modeCode: 'lHlw9demqRo5YjzCLl3MYyGBZtLye8rI', //功能码
@@ -672,8 +932,8 @@ Page({
         let monthweight = []
         resdata.monthsCountWeight.forEach((item) => {
           monthx.push(item.PASSDATE.substr(-2))
-          monthcar.push(item.CNT)
-          monthweight.push(item.NET_WEIGHT)
+          monthcar.push(Math.round(item.CNT))
+          monthweight.push(Math.round(item.NET_WEIGHT))
         })
         let dayx = []
         let daycar = []
@@ -721,18 +981,34 @@ Page({
           case 2:
             that.initChart3()
             break;
+          case 3:
+            that.initChart4()
+            break;
+          case 4:
+            that.initChart5()
+            break;
+          case 5:
+            that.initChart6()
+            break;
+          case 6:
+            that.initChart7()
+            break;
           default:
+            wx.hideLoading({})
             break;
         }
         that.setData({
           once: 0
         })
+        wx.hideLoading({})
       } else {
+        wx.hideLoading({})
         wx.showToast({
           title: res.data.msg,
           icon: 'none',
         })
         that.isLoged(res.data.msg)
+        wx.hideLoading({})
       }
     })
   }

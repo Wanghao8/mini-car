@@ -5,16 +5,16 @@
 	<picker class="monthpicker" bindchange="chooseMonth" value="{{monthIndex}}" range="{{monthList}}">
 		{{monthList[monthIndex]}}
 	</picker>
-
+	<scroll-view scroll-x="true" class="tab-h" style="top:'{{44+topgap}}rpx'" scroll-left="{{scrollLeft}}">
+		<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
+	</scroll-view>
 	<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
 		<swiper-item wx:for="{{oreList}}" wx:key="index">
-			<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-				<view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{oreList}}" wx:key="index">{{item.oreName}}</view>
-			</scroll-view>
+
 			<scroll-view scroll-y="true" class="scoll-h">
 				<view class="content-box flexc0c">
 					<view class="content-top">
-						<view class="flexc0c">
+						<view class="flexc0c" style="width:100%">
 							<view class="content-top-title">月度出厂车次/吨数</view>
 							<view class="content-top-num flexr0c">
 								<view class="content-top-num-left">{{monthCount.COUNT}}</view>
@@ -87,19 +87,19 @@
 						</view>
 						<view class="rank-tabel">
 							<view class="rank-tabel-item" hidden="{{needbtn==1}}" wx:for="{{needfold?needcarshort:needcarlong}}" wx:key="index">
-								<view class="rank-title">{{item.ENTERPRISE_NAME}}</view>
+								<view class="rank-title">{{item.ENTERPRISE_NAME?item.ENTERPRISE_NAME:'(空)'}}</view>
 								<view class="flexr0c">
-									<view class="progress-bar">
-										<view class="progress" style="width:{{item.COUNT/needcarshort[0].COUNT*560}}rpx;color:#F5A623;"></view>
+									<view class="progress-bar {{brand=='an'?'pro-an':''}} {{brand=='iphone'?'pro-iphone':''}} {{brand=='iphonex'?'pro-iphonex':''}}">
+										<view class="progress {{brand=='an'?'pro-an':''}} {{brand=='iphone'?'pro-iphone':''}} {{brand=='iphonex'?'pro-iphonex':''}}" style="width:{{item.COUNT/needcarshort[0].COUNT*560}}rpx;color:#F5A623;"></view>
 									</view>
 									<view class="progress-num">{{item.COUNT}}</view>
 								</view>
 							</view>
 							<view class="rank-tabel-item" hidden="{{needbtn==0}}" wx:for="{{needfold?needweightshort:needweightlong}}" wx:key="index">
-								<view class="rank-title">{{item.ENTERPRISE_NAME}}</view>
+								<view class="rank-title">{{item.ENTERPRISE_NAME?item.ENTERPRISE_NAME:'(空)'}}</view>
 								<view class="flexr0c">
-									<view class="progress-bar">
-										<view class="progress-dun" style="width:{{item.SUM_WEIGHT/needweightshort[0].SUM_WEIGHT*560}}rpx"></view>
+									<view class="progress-bar {{brand=='an'?'pro-an':''}} {{brand=='iphone'?'pro-iphone':''}} {{brand=='iphonex'?'pro-iphonex':''}}">
+										<view class="progress-dun {{brand=='an'?'pro-an':''}} {{brand=='iphone'?'pro-iphone':''}} {{brand=='iphonex'?'pro-iphonex':''}}" style="width:{{item.SUM_WEIGHT/needweightshort[0].SUM_WEIGHT*560}}rpx"></view>
 									</view>
 									<view class="progress-num">{{item.SUM_WEIGHT}}</view>
 								</view>
@@ -114,7 +114,8 @@
 							<image src="../../assets/image/11closearrow.png"></image>
 						</view>
 					</view>
-					<view class="ranktoaddress">
+					<view class="ranktoaddress {{brand=='iphonex'?'ranktoaddressx':''}}">
+					<!-- <view class="ranktoaddress "> -->
 						<view class="chart-top-box flexrbc">
 							<view class="chart-top-left flexr0c">
 								<image class="splitlineimg" src="../../assets/image/8splitline.png"></image>
@@ -127,19 +128,19 @@
 						</view>
 						<view class="rank-tabel">
 							<view class="rank-tabel-item" hidden="{{destinationbtn==1}}" wx:for="{{destinationfold?descarshort:descarlong}}" wx:key="index">
-								<view class="rank-title">{{item.DEST_AREA}}</view>
+								<view class="rank-title">{{item.DEST_AREA?item.DEST_AREA:'(空)'}}</view>
 								<view class="flexr0c">
-									<view class="progress-bar">
-										<view class="progress" style="width:{{item.COUNT/descarshort[0].COUNT*560}}rpx"></view>
+									<view class="progress-bar {{brand=='an'?'pro-an':''}} {{brand=='iphone'?'pro-iphone':''}} {{brand=='iphonex'?'pro-iphonex':''}}">
+										<view class="progress {{brand=='an'?'pro-an':''}} {{brand=='iphone'?'pro-iphone':''}} {{brand=='iphonex'?'pro-iphonex':''}}" style="width:{{item.COUNT/descarshort[0].COUNT*560}}rpx"></view>
 									</view>
 									<view class="progress-num">{{item.COUNT}}</view>
 								</view>
 							</view>
 							<view class="rank-tabel-item" hidden="{{destinationbtn==0}}" wx:for="{{destinationfold?desweightshort:desweightlong}}" wx:key="index">
-								<view class="rank-title">{{item.DEST_AREA}}</view>
+								<view class="rank-title">{{item.DEST_AREA?item.DEST_AREA:'(空)'}}</view>
 								<view class="flexr0c">
-									<view class="progress-bar">
-										<view class="progress-dun" style="width:{{item.SUM_WEIGHT/desweightshort[0].SUM_WEIGHT*560}}rpx"></view>
+									<view class="progress-bar {{brand=='an'?'pro-an':''}} {{brand=='iphone'?'pro-iphone':''}} {{brand=='iphonex'?'pro-iphonex':''}}">
+										<view class="progress-dun {{brand=='an'?'pro-an':''}} {{brand=='iphone'?'pro-iphone':''}} {{brand=='iphonex'?'pro-iphonex':''}}" style="width:{{item.SUM_WEIGHT/desweightshort[0].SUM_WEIGHT*560}}rpx"></view>
 									</view>
 									<view class="progress-num">{{item.SUM_WEIGHT}}</view>
 								</view>

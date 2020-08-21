@@ -2,8 +2,9 @@ var RSA = require('../utils/useRSA.js');
 var AES = require("../utils/public.js");
 var FIX = require("../utils/fixed.js");
 // 接口url
-let baseUrl="http://v.kuangyuntong.com:10256";    //测试
-// let baseUrl="https://openapi.zzkyt.cn";         //生产
+// let baseUrl="http://v.kuangyuntong.com:10256";    //测试
+// let baseUrl="http://192.168.2.192:9023/";    //测试
+let baseUrl="https://openapi.zzkyt.cn";         //生产
 // 公钥
 const rsaPubKey ="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs3Vx3p2gz4kK7RCZpicq6jnZO93qiiSnY/j+Ehf25S0RbzyIJ6o7MkMTNEhuCpHQs5jD67IMhKK6AyFciaByiK8Xji2TTo/sjc4pm+aO91CrzYGp66PfQHqzyNbKn0gg9xwAVZqRrFomailhUCsf1agX0Ikiq62U8UBjxJGQ2jR0wYpO3/Cwn5+38XtQUMvXxJgj93zKIL7WAu/QP0Qdpu7WdcBpoaiMPCSCVfFknfzE5cSXHx9pW9YnIEUrpS5qoNYzyIa3cwUkpiVwaHhIPZI8kiMCfam0VrhWYhOmAskUxS/0ApE0cQaCEFRNtneb/wAylFf/w+ze3HRbGffvOQIDAQAB"; 
 // 获取token的接口
