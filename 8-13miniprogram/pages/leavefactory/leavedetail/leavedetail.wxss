@@ -149,11 +149,11 @@
   flex-grow: 1;
 }
 .needcom1 {
-  width: 200rpx;
+  width: 170rpx;
   white-space: nowrap;
 }
 .needcomx {
-  width: 170rpx;
+  width: 150rpx;
 }
 
 .subtext {

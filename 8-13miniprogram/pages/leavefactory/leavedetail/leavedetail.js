@@ -84,7 +84,7 @@ Page({
       imgurl: wx.getStorageSync('photoBaseUrl'),
     })
     let url = this.data.imgurl + this.data.info.DTL_IMG
-    if(this.data.info.DTL_IMG){
+    if(this.data.info.DTL_IMG&&this.data.info.DTL_IMG!='undefined'){
       this.setData({
         url: url
       })
